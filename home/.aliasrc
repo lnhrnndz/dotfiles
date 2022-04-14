@@ -1,0 +1,34 @@
+# command shortcuts
+alias ls="ls --color=auto --group-directories-first"
+alias ll="ls -l"
+alias la="ls -la"
+
+alias suspend="loginctl suspend"
+
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
+alias tree="tree --dirsfirst -F"
+alias dotfilestree="tree -a . -I .git"
+alias wikis="cd $HOME/wikis"
+alias scripts="cd $HOME/.local/bin"
+alias net="slurm -i $(ip link show | awk '/state UP/ {print $2}' | sed 's/.$//')"
+
+# program shortcuts
+alias vim="nvim"
+alias doom=".emacs.d/bin/doom"
+
+# config shortcuts
+alias zshrc="$EDITOR $HOME/.zshrc"
+alias vimrc="$EDITOR $HOME/.config/nvim/init.vim"
+alias sxhkdrc="$EDITOR $HOME/.config/sxhkd/sxhkdrc"
+alias tmuxcf="$EDITOR $HOME/.tmux.conf"
+
+
+
+# copy/paste file contents to clipcoard on WSL
+copy() {
+    clip.exe < "$1"
+}
+paste() {
+    powershell.exe Get-Clipboard | sed 's/\r//'
+}
+

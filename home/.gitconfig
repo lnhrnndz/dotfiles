@@ -1,0 +1,9 @@
+[core]
+    editor = nvim
+[user]
+	name = Leon Hernandez
+	email = 48255337+lnhrnndz@users.noreply.github.com
+[init]
+	defaultBranch = main
+[pull]
+	ff = only

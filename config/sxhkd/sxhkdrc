@@ -1,0 +1,31 @@
+# dmenu
+super + p
+    dmenu_run -i
+super + shift + p
+    dmenu_run -i -c -l 10
+
+# volume
+XF86AudioMute
+    amixer set Master toggle
+XF86Audio{Raise,Lower}Volume
+    pactl set-sink-volume $(pactl get-default-sink) {+,-}2%
+F1
+    amixer set Master toggle
+F{3,2}
+    pactl set-sink-volume $(pactl get-default-sink) {+,-}2%
+
+#brightness
+XF86MonBrightness{Up,Down}
+    light -{A,U} 10
+
+# scripts
+super + c
+    select-capslock-remap.sh
+
+super + s
+    source select-sink.sh
+
+# apps
+super + o ; {f,q}
+    {firefox,qbittorrent}
+
