@@ -8,20 +8,19 @@ alias suspend="loginctl suspend"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
 alias tree="tree --dirsfirst -F"
 alias dotfilestree="tree -a . -I .git"
+
 alias wikis="cd $HOME/wikis"
-alias scripts="cd $HOME/.local/bin"
 alias net="slurm -i $(ip link show | awk '/state UP/ {print $2}' | sed 's/.$//')"
 
-# program shortcuts
 alias vim="nvim"
-alias doom=".emacs.d/bin/doom"
+alias doom="$HOME/.emacs.d/bin/doom"
 alias xbanish="$HOME/xbanish/xbanish"
 
 # config shortcuts
 alias zshrc="$EDITOR $HOME/.zshrc"
 alias vimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias sxhkdrc="$EDITOR $HOME/.config/sxhkd/sxhkdrc"
-alias tmuxcf="$EDITOR $HOME/.tmux.conf"
+alias tmuxcf="$EDITOR $HOME/.config/tmux/.tmux.conf"
 
 
 
