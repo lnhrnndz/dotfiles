@@ -14,9 +14,7 @@ symlink () {
     fi
 
     ls -A "$1" | while read file; do
-        if [ -e "$destdir/$file" ]; then
-            rm -rf "$destdir/$file"
-        fi
+        rm -rf "$destdir/$file"
         ln -s "$targetdir/$file" "$destdir/$file"
     done
 }
