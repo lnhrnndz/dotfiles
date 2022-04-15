@@ -14,7 +14,12 @@ F1
 F{3,2}
     pactl set-sink-volume $(pactl get-default-sink) {+,-}2%
 
-#brightness
+# power
+# change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/logind/login.conf for systemd)
+XF86PowerOff
+    powerbutton.sh
+
+# brightness
 XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
