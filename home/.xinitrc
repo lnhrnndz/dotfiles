@@ -1,7 +1,7 @@
 #!/bin/sh
 
 xrdb -merge $HOME/.Xresources
-xbanish &
+$HOME/xbanish/xbanish &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 
 
