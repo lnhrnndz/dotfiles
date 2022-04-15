@@ -1,7 +1,7 @@
 #!/bin/sh
 
 xrdb -merge $HOME/.Xresources
-unclutter -grab -idle 4 &
+xbanish &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 
 

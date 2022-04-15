@@ -15,6 +15,7 @@ alias net="slurm -i $(ip link show | awk '/state UP/ {print $2}' | sed 's/.$//')
 # program shortcuts
 alias vim="nvim"
 alias doom=".emacs.d/bin/doom"
+alias xbanish="$HOME/xbanish/xbanish"
 
 # config shortcuts
 alias zshrc="$EDITOR $HOME/.zshrc"
