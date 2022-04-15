@@ -26,8 +26,8 @@ case $proceed in
         symlink home 
         symlink config .config
 
-        [ -e "$HOME/.local/bin" ] && rm -rf "$HOME/.local/bin"; ln -s "$HOME/dotfiles/local/bin" "$HOME/.local/bin"
-        [ -e "$HOME/.local/share/fonts" ] && rm -rf "$HOME/.local/share/fonts"; ln -s "$HOME/dotfiles/local/share/fonts" "$HOME/.local/share/fonts"
+        rm -rf "$HOME/bin"; ln -s "$(pwd)/bin" "$HOME/bin"
+        #rm -rf "$HOME/.local/share/fonts"; ln -s "$HOME/dotfiles/local/share/fonts" "$HOME/.local/share/fonts"
         ;;
     *) exit 1 ;;
 esac

@@ -1,4 +1,4 @@
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$PATH:$HOME/bin
 
 # default programs
 export WM="dwm"

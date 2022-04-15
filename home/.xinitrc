@@ -7,7 +7,7 @@ sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 
 case $WM in
     dwm)
-        exec $HOME/scripts/dwm-status.sh & #|| xsetroot -name "failed"
+        exec dwm-status.sh & #|| xsetroot -name "failed"
         sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
         exec dbus-launch --sh-syntax --exit-with-session dwm
         ;;
@@ -17,7 +17,7 @@ case $WM in
         exec bspwm
         ;;
     *) # default if $WM is not defined
-        exec $HOME/scripts/dwm-status.sh & #|| xsetroot -name "failed"
+        exec dwm-status.sh & #|| xsetroot -name "failed"
         sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
         exec dbus-launch --sh-syntax --exit-with-session dwm
         ;;
