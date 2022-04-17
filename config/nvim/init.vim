@@ -9,6 +9,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
+Plugin 'dracula/vim', { 'name': 'dracula' }
 " Plugin 'ycm-core/YouCompleteMe' " no work :(
 Plugin 'tpope/vim-fugitive'
 Plugin 'vimwiki/vimwiki'
@@ -20,7 +21,15 @@ Plugin 'ap/vim-css-color'
 call vundle#end()
 filetype plugin indent on    " required
 
-colorscheme gruvbox
+
+"colorscheme gruvbox
+colorscheme dracula
+if (empty($TMUX))
+    let g:dracula_italic = 1
+else
+    let g:dracula_italic = 0
+endif
+
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:vimwiki_list = [{'path': '~/wikis',
             \'links_space_char': '-',
@@ -114,6 +123,8 @@ let @i='VJi.mdla<br>j0'
 " remaps
 
 let mapleader = " "
+
+nnoremap <leader>c :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
 " terminal
 nnoremap ! :! 
