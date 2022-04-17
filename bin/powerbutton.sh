@@ -1,11 +1,14 @@
 #!/bin/sh
 
+alias lock="i3lock -e -c 282A36"
+
 options="\
 lock\n\
 suspend\n\
+lock then suspend\n\
 hibernate\n\
 hybrid sleep\n\
-suspend then hybernate\n\
+suspend then hibernate\n\
 shut down\n\
 reboot\n\
 cancel"
@@ -21,14 +24,19 @@ choice=$(echo -e "$options" | dmenu -c -i -l $n -p "What do?")
 
 case "$choice" in 
     lock)
-        i3lock -c 000000 ;;
+        lock ;;
     suspend)
         loginctl suspend ;;
+    lock\ then\ suspend)
+        lock
+        sleep 2
+        loginctl suspend
+        ;;
     hibernate)
         loginctl hibernate ;;
     hybrid\ sleep)
         loginctl hybrid-sleep ;;
-    suspend\ then\ hybernate)
+    suspend\ then\ hibernate)
         loginctl suspend-then-hybernate ;;
     shut\ down)
         loginctl poweroff ;;
