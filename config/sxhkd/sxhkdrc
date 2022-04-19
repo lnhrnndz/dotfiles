@@ -24,11 +24,14 @@ XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
 # scripts
+super + space
+    dmenu-scripts.sh
+
 super + c
-    select-capslock-remap.sh
+    dmenu-capslock-remap.sh
 
 super + s
-    source select-sink.sh
+    source dmenu-sink.sh
 
 # apps
 super + o ; {f,q}
