@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 delim=" "
 
@@ -20,10 +20,13 @@ status() {
     echo "$delim"
 
     # VOLUME
-    VOLUMEON="$(awk -F"[][]" '/Left/ { print $4 }' <(amixer sget Master))"
-    VOLUME="$(awk -F"[][]" '/Left/ { print $2 }' <(amixer sget Master))"
+    #VOLUMEON="$(amixer sget Master | awk -F"[][]" '/Left/ { print $4 }')" #<(amixer sget Master))"
+    #VOLUME="$(amixer sget Master | awk -F"[][]" '/Left/ { print $2 }')" #<(amixer sget Master))"
+    VOLUMEON="$(amixer sget Master | awk -F"[][]" '/Left/ { print $4 }')" #<(amixer sget Master))"
+    SINK="$(pactl get-default-sink)"
+    VOLUME="$(pactl get-sink-volume $SINK | awk '{ print $5 }')" #<(amixer sget Master))"
 
-    [ $VOLUMEON = "off" ] && VOLUME="---"
+    [ "$VOLUMEON" = "off" ] && VOLUME="---"
 
     echo "[VOL $VOLUME]"
 

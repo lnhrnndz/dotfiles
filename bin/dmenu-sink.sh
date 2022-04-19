@@ -6,7 +6,7 @@ WH-1000XM4\n\
 Logi\n\
 USB Dock"
 
-sink=$(echo -e "$sinks" | dmenu -c -i -l 4 -p "Select sink")
+sink=$(echo "$sinks" | dmenu -m 0 -c -i -l 4 -p "Select sink")
 
 case "$sink" in 
     Laptop\ stereo)

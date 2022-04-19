@@ -1,23 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 
 options="\
-Capslock\n\
-Control\n\
-Super\n\
-Escape\n\
-Swap Escape\n\
-Backspace\n\
-nocaps\n\
+Capslock
+Control
+Super
+Escape
+Swap Escape
+Backspace
+nocaps
 None"
 
-opts="$(echo -e -n "$options" | tr -d ' ')"
+opts="$(echo -n "$options" | tr -d ' ')"
 
-n=0
-for i in $opts; do
-    n=$(( $n + 1))
-done
+n="$(echo "$opts" | wc -w)"
 
-choice=$(echo -e "$options" | dmenu -c -i -l $n -p "Select remap") && setxkbmap -option
+choice=$(echo -e "$options" | dmenu -m 0 -c -i -l $n -p "Select remap") && setxkbmap -option
 
 case "$choice" in 
     Capslock)
