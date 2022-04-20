@@ -7,7 +7,7 @@ xrdb -merge $HOME/.Xresources
 $HOME/xbanish/xbanish &
 
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrcbspwm &
 
-exec dwm-status.sh & 
-exec dbus-launch --sh-syntax --exit-with-session dwm
+polybar example &
+exec bspwm
