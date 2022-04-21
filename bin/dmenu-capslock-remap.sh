@@ -10,26 +10,23 @@ Backspace
 nocaps
 None"
 
-opts="$(echo -n "$options" | tr -d ' ')"
-
-n="$(echo "$opts" | wc -w)"
+n="$(echo -n "$options" | tr -d ' ' | wc -w)"
 
 choice=$(echo -e "$options" | dmenu -m 0 -c -i -l $n -p "Select remap") && setxkbmap -option
 
 case "$choice" in 
-    Capslock)
+    "Capslock")
         remap="capslock" ;;
-    Control)
+    "Control")
         remap="ctrl_modifier" ;;
-    Super)
+    "Super")
         remap="super" ;;
-    Escape)
+    "Escape")
         remap="escape" ;;
-    Swap\ Escape)
+    "Swap Escape")
         remap="swapescape" ;;
-    None)
+    "None")
         remap="none" ;;
 esac
 
 setxkbmap -option caps:$remap
-

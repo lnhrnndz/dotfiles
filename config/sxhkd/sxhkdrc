@@ -1,8 +1,8 @@
 # dmenu
 super + p
-    dmenu_run -i
+    dmenu_run -m 0 -i -c -l 10
 super + shift + p
-    dmenu_run -i -c -l 10
+    dmenu_run -m 0 -i
 
 # volume
 XF86AudioMute
@@ -24,14 +24,12 @@ XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
 # scripts
-super + space
-    dmenu-scripts.sh
-
-super + c
-    dmenu-capslock-remap.sh
-
-super + s
-    source dmenu-sink.sh
+super + s; {Return, c, s}
+    dmenu-{\
+    scripts,\
+    capslock-remap,\
+    sink\
+    }.sh
 
 # apps
 super + o ; {f,q}
