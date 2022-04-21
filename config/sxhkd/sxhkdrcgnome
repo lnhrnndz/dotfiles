@@ -1,0 +1,8 @@
+alt + p
+    dmenu_run -i -c -l 10 -m 0
+
+alt + Return
+    dmenu-scripts.sh
+
+alt + c
+    dmenu-capslock-remap.sh
