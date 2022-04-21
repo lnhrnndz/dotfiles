@@ -62,4 +62,3 @@ while true; do
     xsetroot -name "$(status | tr -d '\n')"
     sleep 1s
 done
-

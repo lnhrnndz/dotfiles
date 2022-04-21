@@ -7,4 +7,3 @@ export TERM="st-256color"
 export SHELL="zsh"
 
 export BROWSER="surf"
-

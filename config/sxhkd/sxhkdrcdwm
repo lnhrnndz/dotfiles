@@ -1,4 +1,3 @@
 # dwm
 super + shift + q
     [ $(echo "No\nYes" | dmenu -i -p "Quit dwm?") = "Yes" ] && killall dwm
-

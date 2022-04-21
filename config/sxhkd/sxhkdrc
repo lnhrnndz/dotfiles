@@ -34,4 +34,3 @@ super + s; {Return, c, s}
 # apps
 super + o ; {f,q}
     {firefox,qbittorrent}
-

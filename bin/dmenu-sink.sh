@@ -27,4 +27,3 @@ case "$sink" in
         pactl set-default-sink alsa_output.usb-DisplayLink_USB_3.0_Dual_Video_Dock_ABCD01210017427-02.iec958-stereo
         ;;
 esac
-

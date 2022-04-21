@@ -31,4 +31,3 @@ copy() {
 paste() {
     powershell.exe Get-Clipboard | sed 's/\r//'
 }
-
