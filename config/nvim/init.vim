@@ -24,6 +24,7 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set visualbell
+set mouse=a
 set termguicolors
 set encoding=utf-8
 set noerrorbells
