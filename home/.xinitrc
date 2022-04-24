@@ -6,6 +6,7 @@ xrdb -merge $HOME/.Xresources
 
 $HOME/xbanish/xbanish &
 
+setxkbmap -option caps:ctrl_modifier
 
 
 while type dwm > /dev/null; do
