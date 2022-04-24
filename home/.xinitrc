@@ -9,5 +9,5 @@ $HOME/xbanish/xbanish &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
 
-exec dwm-status.sh & 
+exec dwm-status &
 exec dbus-launch --sh-syntax --exit-with-session dwm

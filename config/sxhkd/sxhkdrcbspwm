@@ -1,5 +1,5 @@
 super + shift + q
-    [ $(echo "No\nYes" | dmenu -i -p "Quit bspwm?") = "Yes" ] && killall bspwm
+    prompt "Exit bspwm?" "pkill bspwm"
 
 #
 # wm independent hotkeys

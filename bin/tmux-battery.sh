@@ -11,18 +11,23 @@ else
     exit 1
 fi
 
+charging="#[bg=colour119,fg=colour000]"
+normal="#[bg=colour40,fg=colour000]"
+low="#[bg=colour214,fg=colour234]"
+critical="#[bg=colour160,fg=colour255]"
+
 
 if [ $batterystatus == Charging ]; then
-    echo "#[bg=colour96,fg=colour223] $battery% "
+    echo "$charging $battery% "
     exit 0
 fi
 
 if [ $(( $battery > 20 )) == 1 ]; then
-    echo "#[bg=colour142,fg=colour234] $battery% "
+    echo "$battery% "
 elif [ $(( $battery > 5 )) == 1 ]; then
-    echo "#[bg=colour208,fg=colour234] $battery% "
+    echo "$battery% "
 else
-    echo "#[bg=colour124,fg=colour223] !!!!! $battery% !!!!! "
+    echo "$critical !!!!! $battery% !!!!! "
 fi
 
 exit 0

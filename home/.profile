@@ -1,7 +1,6 @@
-export PATH=$PATH:$HOME/bin
+export PATH="$PATH:${$(find ~/bin/ -type d -printf %p:)%%:}:$HOME/.emacs.d/bin"
 
 # default programs
-export WM="dwm"
 export EDITOR="nvim"
 export TERM="st-256color"
 export SHELL="zsh"

@@ -6,30 +6,28 @@ super + shift + p
 
 # volume
 XF86AudioMute
-    amixer set Master toggle
+    chvol togglemute
 XF86Audio{Raise,Lower}Volume
-    pactl set-sink-volume $(pactl get-default-sink) {+,-}2%
+    chvol {up,down}
 F1
-    amixer set Master toggle
+    chvol togglemute
 F{3,2}
-    pactl set-sink-volume $(pactl get-default-sink) {+,-}2%
+    chvol {up,down}
 
 # power
 # change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/logind/login.conf for systemd)
 XF86PowerOff
-    powerbutton.sh
+    powermenu
 
 # brightness
 XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
 # scripts
-super + s; {Return, c, s}
-    dmenu-{\
-    scripts,\
-    capslock-remap,\
-    sink\
-    }.sh
+super + s
+    dmenuscripts
+super + c
+    chcol
 
 # apps
 super + o ; {f,q}

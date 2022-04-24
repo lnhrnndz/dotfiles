@@ -1,0 +1,11 @@
+#!/bin/bash
+
+options="$(ls "$HOME"/bin/dmenu | grep -v -F "dmenuscripts")"
+
+n="$(echo "$options" | wc -w)"
+
+script=$(echo "$options" | dmenu -m 0 -c -i -l $n -p "Select script")
+
+[ -z "$script" ] && exit 
+
+exec "$script"
