@@ -97,12 +97,6 @@ set statusline+=\
 " set stl=%#TermCursor#%#TermCursor#\ %{g:modeMap[mode()]}\ %#TermCursor#%#DiffChange#%{StatuslineGit()}%#ColorColumn#\ [%n]\ %t\ %m%r%=%<\ %y\ %#StatusLine#\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}]\ %#TermCursor#\ %p%%\ %l:%c\ 
 
 
-" registers
-
-let @m='f)i.mdl'
-let @l='VJi.mdo'
-let @i='VJi.mdla<br>j0'
-
 
 " remaps
 
