@@ -5,4 +5,4 @@ export EDITOR="nvim"
 export TERM="st-256color"
 export SHELL="zsh"
 
-export BROWSER="surf"
+export BROWSER="firefox"
