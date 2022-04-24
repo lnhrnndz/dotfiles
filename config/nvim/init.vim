@@ -4,11 +4,13 @@
 
 
 call plug#begin('~/.config/nvim/plugged')
-Plug '~/xresources-nvim'
+Plug 'lnnhrnndz/xresources-nvim'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ap/vim-css-color'
 call plug#end()
+
+colorscheme xresources
 
 
 let $FZF_DEFAULT_OPTS='--reverse'
