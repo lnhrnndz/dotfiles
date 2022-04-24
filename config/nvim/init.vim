@@ -1,34 +1,15 @@
 " github.com/lnhrnndz
 
 
-" vundle stuff
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'dracula/vim', { 'name': 'dracula' }
-" Plugin 'ycm-core/YouCompleteMe' " no work :(
-Plugin 'tpope/vim-fugitive'
-Plugin 'vimwiki/vimwiki'
-" Plugin 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plugin 'stsewd/fzf-checkout.vim'
-Plugin 'preservim/nerdtree'
-Plugin 'ap/vim-css-color'
-call vundle#end()
-filetype plugin indent on    " required
 
 
-"colorscheme gruvbox
-colorscheme dracula
-if (empty($TMUX))
-    let g:dracula_italic = 1
-else
-    let g:dracula_italic = 0
-endif
+call plug#begin('~/.config/nvim/plugged')
+Plug '~/xresources-nvim'
+Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ap/vim-css-color'
+call plug#end()
+
 
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:vimwiki_list = [{'path': '~/wikis',
