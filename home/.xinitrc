@@ -6,8 +6,15 @@ xrdb -merge $HOME/.Xresources
 
 $HOME/xbanish/xbanish &
 
-sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
 
-exec dwm-status &
-exec dbus-launch --sh-syntax --exit-with-session dwm
+
+while type dwm > /dev/null; do
+    pkill dwm-status
+    exec dwm-status &
+
+    pkill sxhkd
+    sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
+    sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
+
+    dwm && continue || break
+done
