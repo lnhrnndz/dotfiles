@@ -4,7 +4,7 @@
 
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'lnnhrnndz/xresources-nvim'
+Plug 'lnhrnndz/xresources-nvim'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ap/vim-css-color'
