@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options=$(ls $HOME/dotfiles/Xresources/)
+options=$(ls $HOME/dotfiles/themes/)
 
 n="$(echo -n "$options" | tr -d ' ' | wc -w)"
 
@@ -8,13 +8,13 @@ choice=$(echo -e "$options" | dmenu -m 0 -c -i -l $n -p "set colorscheme")
 
 
 [ -z "$choice" ] && echo "chcol: aborting" && exit 1
-[ ! -e "$HOME/dotfiles/Xresources/$choice" ] && echo "chcol: no such file: $HOME/dotfiles/Xresources/$choice" && exit 1
+[ ! -e "$HOME/dotfiles/themes/$choice" ] && echo "chcol: no such file: $HOME/dotfiles/themes/$choice" && exit 1
 
 echo "changing colorscheme to $choice"
 echo "some apps may need to restart"
 
 rm "$HOME/.Xresources"
 
-ln -s "$HOME/dotfiles/Xresources/$choice" "$HOME/.Xresources"
+ln -s "$HOME/dotfiles/themes/$choice" "$HOME/.Xresources"
 
 xrdb "$HOME/.Xresources"
