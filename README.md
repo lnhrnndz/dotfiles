@@ -19,12 +19,20 @@ Other applications I use (not included in dotfiles):
 - [st](https://github.com/lnhrnndz/st)
 
 ## Installation
-
 ```
-git clone https://github.com/lnhrnndz/dotfiles.git
-cd dotfiles
+git clone https://github.com/lnhrnndz/dotfiles.git; cd dotfiles
+```
+
+Use [GNU Stow](https://www.gnu.org/software/stow/) to apply config files.
+
+For example:
+```
+stow nvim
+```
+
+Or deploy all config files at once with the `deploy.sh` script.
+```
 ./deploy.sh
 ```
 
-`deploy.sh` creates symlinks to the dotfiles instead of copies.
-This way all changes to the files automagically show up in the dotfiles repository and vice versa.
+Remove conflicting files before stowing or yolo it and have stow scold you.
