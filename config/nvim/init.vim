@@ -8,6 +8,10 @@ Plug 'lnnhrnndz/xresources-nvim'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ap/vim-css-color'
+
+Plug 'vimwiki/vimwiki'
+
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 colorscheme xresources
