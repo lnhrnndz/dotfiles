@@ -16,6 +16,12 @@ call plug#end()
 
 colorscheme xresources
 
+" when using dracula theme within tmux disable italics
+if (empty($TMUX))
+    let g:dracula_italic = 1
+else
+    let g:dracula_italic = 0
+endif
 
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:vimwiki_list = [{'path': '~/wikis',
