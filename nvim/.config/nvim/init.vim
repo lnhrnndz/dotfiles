@@ -184,3 +184,6 @@ vnoremap / y/<C-R>=escape(@",'/\')<CR><BS>
 inoremap {<CR> {<CR><BS>}<Esc>O
 inoremap [<CR> [<CR><BS>]<Esc>O
 inoremap (<CR> (<CR><BS>)<Esc>O
+
+nnoremap <leader><leader>s :! shellcheck %<CR>
+nnoremap <leader><leader>S :vsplit<CR>:terminal shellcheck %<CR>
