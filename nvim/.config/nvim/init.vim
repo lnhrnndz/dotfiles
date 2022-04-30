@@ -29,6 +29,8 @@ let g:vimwiki_list = [{'path': '~/wikis',
             \'syntax': 'markdown', 'ext': '.md'}]
 
 
+set title
+set splitbelow splitright
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -53,9 +55,12 @@ set undodir=~/.vim/undodir
 set undofile
 set hidden
 
+" Enable autocompletion:
+set wildmode=longest,list,full
+" Disables automatic commenting on newline:
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " hybrid relative numbers
-
 set number
 augroup numbertoggle
   autocmd!
