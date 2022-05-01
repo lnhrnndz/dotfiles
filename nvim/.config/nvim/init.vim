@@ -125,7 +125,6 @@ nnoremap ! :!
 
 " write changes and source file
 map <leader>% :w<CR>:so %<CR>
-map <leader>r :w<CR>:so %<CR>
 
 " application shortcuts
 map <leader>n :NERDTreeToggle<CR>
@@ -166,11 +165,11 @@ nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
 nmap <leader>l <C-w>l
 
-nnoremap <leader>s :%s//gc<Left><Left><left>
-nnoremap <leader>S :s//gc<Left><Left><left>
+nnoremap <leader>r :%s//gc<Left><Left><left>
+nnoremap <leader>R :s//gc<Left><Left><left>
 
-vnoremap <leader>s y:%s//gc<left><left><left><C-R>=escape(@",'/\')<CR><BS>/
-vnoremap <leader>S y:s//gc<left><left><left><C-R>=escape(@",'/\')<CR><BS>/
+vnoremap <leader>r y:%s//gc<left><left><left><C-R>=escape(@",'/\')<CR><BS>/
+vnoremap <leader>R y:s//gc<left><left><left><C-R>=escape(@",'/\')<CR><BS>/
 vnoremap / y/<C-R>=escape(@",'/\')<CR><BS>
 
 " inoremap { {}<Esc>i
@@ -185,5 +184,5 @@ inoremap {<CR> {<CR><BS>}<Esc>O
 inoremap [<CR> [<CR><BS>]<Esc>O
 inoremap (<CR> (<CR><BS>)<Esc>O
 
-nnoremap <leader><leader>s :! shellcheck %<CR>
-nnoremap <leader><leader>S :vsplit<CR>:terminal shellcheck %<CR>
+nnoremap <leader>s :! shellcheck %<CR>
+nnoremap <leader>S :vsplit<CR>:terminal shellcheck %<CR>
