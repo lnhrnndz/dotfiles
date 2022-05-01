@@ -11,7 +11,7 @@ USB Dock"
 
 n=$(echo "$sinks" | tr -d ' ' | wc -w)
 
-sink=$(echo "$sinks" | dmenu -m 0 -c -i -l $n -p "Select sink")
+sink=$(echo "$sinks" | dmenu -m 0 -c -i -l "$n" -p "Select sink")
 
 case "$sink" in 
     "Laptop stereo")

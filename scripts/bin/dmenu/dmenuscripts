@@ -1,10 +1,10 @@
 #!/bin/bash
 
-options="$(ls "$HOME"/bin/dmenu | grep -v -F "dmenuscripts")"
+options="$(ls "$HOME"/bin/dmenu | grep -v -F "dmenuscripts")" # shellcheck does not approve
 
 n="$(echo "$options" | wc -w)"
 
-script=$(echo "$options" | dmenu -m 0 -c -i -l $n -p "Select script")
+script=$(echo "$options" | dmenu -m 0 -c -i -l "$n" -p "Select script")
 
 [ -z "$script" ] && exit 
 

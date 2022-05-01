@@ -3,24 +3,24 @@
 alias lock="i3lock -e -c 282A36"
 
 options="\
-lock\n\
-suspend\n\
-lock then suspend\n\
-hibernate\n\
-hybrid sleep\n\
-suspend then hibernate\n\
-shut down\n\
-reboot\n\
+lock
+suspend
+lock then suspend
+hibernate
+hybrid sleep
+suspend then hibernate
+shut down
+reboot
 cancel"
 
-opts="$(echo -e -n "$options" | tr -d ' ')"
+opts="$(echo "$options" | tr -d ' ')"
 
 n=0
-for i in $opts; do
-    n=$(( $n + 1))
+for _ in $opts; do
+    n=$(( n + 1))
 done
 
-choice=$(echo -e "$options" | dmenu -c -i -l $n -p "What do?")
+choice=$(echo "$options" | dmenu -c -i -l $n -p "What do?")
 
 case "$choice" in 
     lock)

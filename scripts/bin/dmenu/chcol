@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
-options=$(ls $HOME/dotfiles/themes/)
+options=$(ls "$HOME"/dotfiles/themes/)
 
-n="$(echo -n "$options" | tr -d ' ' | wc -w)"
+n="$(echo "$options" | tr -d ' ' | wc -w)"
 
-choice=$(echo -e "$options" | dmenu -m 0 -c -i -l $n -p "set colorscheme") 
+choice=$(echo "$options" | dmenu -m 0 -c -i -l "$n" -p "set colorscheme")
 
 
 [ -z "$choice" ] && echo "chcol: aborting" && exit 1
