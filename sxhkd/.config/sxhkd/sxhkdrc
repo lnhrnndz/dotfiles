@@ -23,6 +23,12 @@ XF86PowerOff
 XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
+# dunst
+super + grave
+    dunstctl history-pop
+super + x
+    dunstctl close-all
+
 # scripts
 super + s
     dmenuscripts

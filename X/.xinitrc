@@ -10,8 +10,10 @@ setxkbmap -option caps:ctrl_modifier
 
 
 while type dwm > /dev/null; do
+    pkill notification-da
+    dunst &
     pkill dwm-status
-    exec dwm-status &
+    dwm-status &
 
     pkill sxhkd
     sxhkd -c $HOME/.config/sxhkd/sxhkdrc &

@@ -1,17 +1,46 @@
-#!/bin/bash
+#!/bin/sh
+
+# change volume
 
 SINK=$(pactl get-default-sink)
 
-if [ "$1" = "togglemute" ]; then
-    pactl set-sink-mute "$SINK" toggle
-elif [ "$1" = "up" ]; then
-    pactl set-sink-volume "$SINK" +2%
-elif [ "$1" = "down" ]; then
-    pactl set-sink-volume "$SINK" -2%
-fi
+case "$1" in
+    "togglemute")
+        pactl set-sink-mute "$SINK" toggle
+        ;;
+    "up")
+        pactl set-sink-volume "$SINK" +2%
+        ;;
+    "down")
+        pactl set-sink-volume "$SINK" -2%
+        ;;
+esac
 
 VOLUME=$(pactl get-sink-volume "$SINK" | awk '{ print $5 }' | sed 's/%//')
 [ "$VOLUME" -gt 100 ] && pactl set-sink-volume "$SINK" 100%
 [ "$VOLUME" -lt 0 ] && pactl set-sink-volume "$SINK" 0%
 
-echo "Volume: $VOLUME"
+
+# send notification
+
+notify () {
+    dunstify -a "chvol" -u low -r 444 -h int:value:"$VOLUME" "Volume: ${VOLUME}%" -t 2000 # -i "$1"
+}
+
+notify
+
+exit 0
+
+MUTED=$(pactl get-sink-mute "$SINK" | awk '{ print $2 }')
+
+if [ "$MUTED" = "yes" ]; then
+    notify volume-mute
+elif [ "$VOLUME" -eq 0 ]; then
+    notify volume-off
+elif [ "$VOLUME" -lt 30 ]; then
+    notify volume-low
+#elif [ "$VOLUME" -lt 80 ]; then
+#    notify volume-mid
+else
+    notify volume-high
+fi
