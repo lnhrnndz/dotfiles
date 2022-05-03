@@ -19,3 +19,7 @@ ls | while read file; do
     [ -d "$file" ] && [ -z "$(echo "$ignore" | grep -w "$file")" ] || continue
     stow -v "$file"
 done
+
+fc-cache -f -v
+
+exit 0
