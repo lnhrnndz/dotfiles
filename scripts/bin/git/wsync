@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# wiki sync
+#
+# automagically updates index readme of a wiki 
+# and syncs changes to git via gsync script.
+
+if [ -n "$1" ]; then
+    if [ -d "$1" ]; then
+        DIR="$1"
+    else
+        echo "$1 not found"
+        exit 1
+    fi
+else
+    DIR=
+fi
+
+INDEX="${DIR}/index.md"
+
+printf "# index\n\n" > "$INDEX"
+
+printf "## MOCs\n\n" >> "$INDEX"
+MOCS=$(find "${DIR}/pages/" -name '*-MOC.md')
+for FILE in $MOCS; do
+    FILE=$(basename "$FILE")
+    TITLE=$(echo "$FILE" | sed 's/-MOC.md//g' | sed 's/-/ /g')
+    echo "[$TITLE](pages/$FILE)<br>" >> "$INDEX"
+done
+
+printf "\n## pages\n\n" >> "$INDEX"
+REG=$(find "${DIR}/pages/" -type f | grep -v '\-MOC\.md$' | sort -f)
+for FILE in $REG; do
+    FILE=$(basename "$FILE")
+    TITLE=$(echo "$FILE" | sed 's/.md//g' | sed 's/-/ /g')
+    echo "[$TITLE](pages/$FILE)<br>" >> "$INDEX"
+done
+
+printf '\n## assets\n\n' >> "$INDEX"
+echo '[images](assets/images)<br>' >> "$INDEX"
+
+README="${DIR}/README.md"
+
+if [ -n "$2" ]; then
+    WIKI="$2"
+else
+    WIKI=$(basename "$DIR")
+fi
+
+printf "# $WIKI\n\n" > "$README"
+
+sed 's/^#/##/' "$INDEX" >> "$README"
+
+gsync "$DIR"
