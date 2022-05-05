@@ -34,6 +34,8 @@ super + s
     dmenuscripts
 super + c
     chcol
+super + m; {1,2,3}
+    chmon {0,1,2}
 
 # apps
 super + o ; {f,q}
