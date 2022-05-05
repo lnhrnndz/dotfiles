@@ -56,6 +56,18 @@ multimon() { # Multi-monitor handler.
 
 onescreen() { # If only one output available or chosen.
     xrandr --output "$1" --primary --auto
+    disableotherscreens "$1"
+}
+
+disableotherscreens() {
+    #otherscreens=$(echo "$screens" | grep -v -F "$@")
+    otherscreens=$screens
+    for arg in "$@"; do
+        otherscreens=$(echo "$otherscreens" | grep -v "$arg")
+    done
+    for screen in $otherscreens; do
+        xrandr --output "$screen" --off
+    done
 }
 
 postrun() { # Stuff to run to clean up.
