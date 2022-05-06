@@ -4,7 +4,7 @@ xrandr --output HDMI-2 --primary --right-of eDP-1
 
 xrdb -merge $HOME/.Xresources
 
-$HOME/xbanish/xbanish &
+/usr/bin/xbanish &
 
 setxkbmap -option caps:ctrl_modifier
 
