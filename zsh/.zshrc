@@ -14,6 +14,9 @@ zstyle ':vcs_info:git:*' formats '%fon %F{039}%b '
 setopt PROMPT_SUBST
 PROMPT='%B%F{099}%n %{$reset_color%}in %F{010}%~ ${vcs_info_msg_0_}%F{166}λ %f'
 
+THEME=$(xrdb -query | awk '/name/ { print $2 }')
+[ "$THEME" = "greenscreen" ] && PROMPT='%B%n %{$reset_color%}in %~ ${vcs_info_msg_0_}λ %f'
+
 # # simpler half-life prompt (no git):
 # # Enable colors and change prompt:
 # autoload -U colors && colors  # Load colors
