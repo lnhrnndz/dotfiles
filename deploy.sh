@@ -1,25 +1,33 @@
-#!/bin/bash
+#!/bin/sh
 
-function prompt () {
-    read -p "$1 [y/n] " answer
-    case $answer in
-        Y|y) echo 1 ;;
-	N|n) echo 0 ;;
-	*) echo $(prompt "$1") ;;
+prompt () {
+    PROMPT="$1"
+    printf "%s [y/n] " "$PROMPT"
+    read -r ANSWER
+    case $ANSWER in
+        Y|y) return ;;
+        N|n) return ;;
+	    *) prompt "$1" ;;
     esac
 }
 
+prompt "Prompt to stow every folder individually?"
+[ "$ANSWER" = "y" ] && echo "" && NOPROMPT="n" || NOPROMPT="y"
 
-echo "WARNING: This script only works if it is located in $HOME/dotfiles"
-[ $(prompt "Proceed?") -ne 0 ] || exit 1
-
-ignore="wallpapers themes"
-
-ls | while read file; do
-    [ -d "$file" ] && [ -z "$(echo "$ignore" | grep -w "$file")" ] || continue
-    stow -v "$file"
+IGNORE="wallpapers themes"
+for DIR in *; do
+    [ -d "$DIR" ] || continue
+    echo "$IGNORE" | grep -qw "$DIR" && continue
+    if [ "$NOPROMPT" = "n" ]; then
+        prompt "stow $DIR?"
+        [ "$ANSWER" = "y" ] && stow "$DIR" -t "$HOME"
+    else
+        stow "$DIR" -t "$HOME"
+    fi
 done
 
-fc-cache -f -v
+echo ""
+prompt "run fc-cache -f -v to cache fonts?"
+[ "$ANSWER" = "y" ] && fc-cache -f -v
 
 exit 0
