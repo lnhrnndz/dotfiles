@@ -17,7 +17,7 @@ prompt () {
 prompt "Prompt to stow every folder individually?" "n" "[y/N]"
 [ "$ANSWER" = "y" ] && echo "" && NOPROMPT="n" || NOPROMPT="y"
 
-IGNORE="wallpapers themes"
+IGNORE="none"
 for DIR in *; do
     [ -d "$DIR" ] || continue
     echo "$IGNORE" | grep -qw "$DIR" && continue
