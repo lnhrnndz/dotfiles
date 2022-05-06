@@ -1,7 +1,0 @@
-#!/bin/sh
-
-xrdb -merge $HOME/.Xresources
-#$HOME/xbanish/xbanish &
-stxkbmap -option caps:ctrl_modifier
-sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-sxhkd -c $HOME/.config/sxhkd/sxhkdrcgnome &
