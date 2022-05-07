@@ -2,5 +2,5 @@
 
 for FILE in *; do
     [ ! -d "$FILE" ] && continue
-    stow -D "$FILE" -t "$HOME"
+    stow -D "$FILE" -v -t "$HOME"
 done

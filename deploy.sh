@@ -25,7 +25,7 @@ for DIR in *; do
         prompt "stow $DIR?" "y" "[Y/n]"
         [ "$ANSWER" = "y" ] && stow "$DIR" -t "$HOME"
     else
-        stow "$DIR" -t "$HOME"
+        stow "$DIR" -v -t "$HOME"
     fi
 done
 
