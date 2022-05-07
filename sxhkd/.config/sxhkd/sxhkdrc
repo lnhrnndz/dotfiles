@@ -8,11 +8,13 @@ super + shift + p
 XF86AudioMute
     chvol togglemute
 XF86Audio{Raise,Lower}Volume
-    chvol {up,down}
+    chvol {up,down} 5
+shift + XF86Audio{Raise,Lower}Volume
+    chvol {up,down} 2
 F1
     chvol togglemute
 F{3,2}
-    chvol {up,down}
+    chvol {up,down} 5
 
 # power
 # change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/logind/login.conf for systemd)
