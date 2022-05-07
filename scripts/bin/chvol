@@ -2,6 +2,9 @@
 
 # change volume
 
+# use second argument as step if given, otherwise default to 2
+[ -n "$2" ] && STEP="$2" || STEP="2"
+
 SINK=$(pactl get-default-sink)
 
 case "$1" in
@@ -9,10 +12,15 @@ case "$1" in
         pactl set-sink-mute "$SINK" toggle
         ;;
     "up")
-        pactl set-sink-volume "$SINK" +2%
+        pactl set-sink-volume "$SINK" "+${STEP}%"
         ;;
     "down")
-        pactl set-sink-volume "$SINK" -2%
+        pactl set-sink-volume "$SINK" "-${STEP}%"
+        ;;
+    *)
+        if [ "$1" -ge 0 ] && [ "$1" -le 100 ]; then
+            pactl set-sink-volume "$SINK" "${1}%"
+        fi
         ;;
 esac
 
@@ -39,8 +47,8 @@ elif [ "$VOLUME" -eq 0 ]; then
     notify volume-off
 elif [ "$VOLUME" -lt 30 ]; then
     notify volume-low
-#elif [ "$VOLUME" -lt 80 ]; then
-#    notify volume-mid
+elif [ "$VOLUME" -lt 80 ]; then
+    notify volume-mid
 else
     notify volume-high
 fi
