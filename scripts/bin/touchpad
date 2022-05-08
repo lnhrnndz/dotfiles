@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case "$1" in
+    on) STATE="1" ;;
+    off) STATE="0" ;;
+    *) exit 1 ;;
+esac
+
+ID=$(xinput list | awk '/TouchPad/ { print $6 }' | sed 's/id=//')
+
+xinput set-prop "$ID" "Device Enabled" "$STATE"
