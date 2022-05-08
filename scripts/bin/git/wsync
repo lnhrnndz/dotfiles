@@ -13,7 +13,7 @@ if [ -n "$1" ]; then
         exit 1
     fi
 else
-    DIR=
+    DIR=$(pwd)
 fi
 
 INDEX="${DIR}/index.md"
@@ -47,7 +47,7 @@ else
     WIKI=$(basename "$DIR")
 fi
 
-printf "# $WIKI\n\n" > "$README"
+printf "# %s\n\n" "$WIKI" > "$README"
 
 sed 's/^#/##/' "$INDEX" >> "$README"
 
