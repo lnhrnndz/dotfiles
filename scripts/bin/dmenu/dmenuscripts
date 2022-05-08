@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-options="$(ls "$HOME"/bin/dmenu | grep -v -F "dmenuscripts")" # shellcheck does not approve
+scripts=$(find "$HOME"/bin/dmenu/* | grep -v -F "dmenuscripts")
+options=$(echo "$scripts" | sed "s|${HOME}/bin/dmenu/||")
 
 n="$(echo "$options" | wc -w)"
 

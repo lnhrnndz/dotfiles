@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # script to add battery status to tmux status bar
 
 if [ -e /sys/class/power_supply/BAT0/capacity ]; then
@@ -17,14 +17,14 @@ low="#[bg=colour214,fg=colour234]"
 critical="#[bg=colour160,fg=colour255]"
 
 
-if [ $batterystatus == Charging ]; then
+if [ "$batterystatus" = Charging ] && [ "$battery" -lt 99 ]; then
     echo "$charging $battery% "
     exit 0
 fi
 
-if [ $(( $battery > 20 )) == 1 ]; then
+if [ "$(( battery > 20 ))" = 1 ]; then
     echo "$battery% "
-elif [ $(( $battery > 5 )) == 1 ]; then
+elif [ "$(( battery > 5 ))" = 1 ]; then
     echo "$battery% "
 else
     echo "$critical !!!!! $battery% !!!!! "
