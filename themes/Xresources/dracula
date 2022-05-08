@@ -5,22 +5,6 @@ Xcursor.theme: Bibata-Modern-Classic
 
 *.foreground: #F8F8F2
 *.background: #282A36
-!*.color0:     #000000
-!*.color8:     #4D4D4D
-!*.color1:     #FF5555
-!*.color9:     #FF6E67
-!*.color2:     #50FA7B
-!*.color10:    #5AF78E
-!*.color3:     #F1FA8C
-!*.color11:    #F4F99D
-!*.color4:     #BD93F9
-!*.color12:    #CAA9FA
-!*.color5:     #FF79C6
-!*.color13:    #FF92D0
-!*.color6:     #8BE9FD
-!*.color14:    #9AEDFE
-!*.color7:     #BFBFBF
-!*.color15:    #E6E6E6
 
 *.color0:     #21222C
 *.color8:     #6272A4
@@ -38,27 +22,3 @@ Xcursor.theme: Bibata-Modern-Classic
 *.color14:    #A4FFFF
 *.color7:     #F8F8F2
 *.color15:    #FFFFFF
-
-*.status  : #191A21
-
-
-*.fg        : #F8F8F2
-
-*.bglighter : #424450
-*.bglight   : #343746
-*.bg        : #282A36
-*.bgdark    : #21222C
-*.bgdarker  : #191A21
-
-*.comment   : #6272A4
-*.selection : #44475A
-*.subtle    : #424450
-
-*.cyan      : #8BE9FD
-*.green     : #50FA7B
-*.orange    : #FFB86C
-*.pink      : #FF79C6
-*.purple    : #BD93F9
-*.red       : #FF5555
-*.yellow    : #F1FA8C
-
