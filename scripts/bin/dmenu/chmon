@@ -61,7 +61,7 @@ onescreen() { # If only one output available or chosen.
 
 disableotherscreens() {
     #otherscreens=$(echo "$screens" | grep -v -F "$@")
-    otherscreens=$screens
+    otherscreens=$(echo "$allposs" | awk '{print $1}')
     for arg in "$@"; do
         otherscreens=$(echo "$otherscreens" | grep -v "$arg")
     done
