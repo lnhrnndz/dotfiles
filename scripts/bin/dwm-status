@@ -11,7 +11,8 @@ status() {
     # TEMPERATURE
 
     # INTERNET
-    NETWORK="$(iw dev wlp0s20f3 link | awk '/SSID/{print $2}')"
+    INTERFACE=$(ip link | awk '/wlp/{print $2}' | sed 's/://')
+    NETWORK="$(iw dev "$INTERFACE" link | awk '/SSID/{print $2}')"
 
     [ -z $NETWORK ] && NETWORK="N/A"
 
