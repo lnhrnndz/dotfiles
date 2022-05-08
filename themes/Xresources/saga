@@ -2,6 +2,8 @@
 
 name:   saga
 
+Xcursor.theme: Bibata-Modern-Classic
+
 *.foreground: #FAF8F6
 *.background: #212121
 *.color0:     #0A0D0F

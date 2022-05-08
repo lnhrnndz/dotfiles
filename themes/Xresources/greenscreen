@@ -3,6 +3,8 @@
 
 name:   greenscreen
 
+Xcursor.theme: Bibata-Modern-Classic
+
 #define base00 #001100
 #define base01 #003300
 #define base02 #005500

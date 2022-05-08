@@ -1,6 +1,8 @@
 ! Dracula Xresources palette
 name:   dracula
 
+Xcursor.theme: Bibata-Modern-Classic
+
 *.foreground: #F8F8F2
 *.background: #282A36
 !*.color0:     #000000
