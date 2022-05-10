@@ -6,10 +6,6 @@ status() {
 
     echo " "
 
-    # MUSIC
-
-    # TEMPERATURE
-
     # INTERNET
     INTERFACE=$(ip link | awk '/wlp/{print $2}' | sed 's/://')
     NETWORK="$(iw dev "$INTERFACE" link | awk '/SSID/{print $2}')"
@@ -31,25 +27,30 @@ status() {
 
     echo "$delim"
 
-    # RAM
-
-    # CPU
-
     # BATTERY
-    BATTERY=$(cat /sys/class/power_supply/BAT0/capacity)
-    BATTERYSTATUS=$(cat /sys/class/power_supply/BAT0/status)
+    for BATTERY in /sys/class/power_supply/BAT* ; do
 
-    if [ "$BATTERY" -lt 10 ] && [ ! "$BATTERYSTATUS" = "charging" ]; then
-        if [ "$(( $(date +%S) % 2))" -eq 0 ]; then
-            echo "        "
+        if [ "$(find /sys/class/power_supply/ -name BAT\* | wc -l)" -lt 2 ]; then
+            BAT="BAT"
         else
-            echo "[BAT ${BATTERY}%]"
+            BAT=$(basename "$BATTERY")
         fi
-    else
-        echo "[BAT ${BATTERY}%]"
-    fi
 
-    echo "$delim"
+        CAPACITY=$(cat "${BATTERY}/capacity")
+        STATUS=$(cat "${BATTERY}/status")
+
+        if [ "$CAPACITY" -lt 10 ] && [ ! "$STATUS" = "charging" ]; then
+            if [ "$(( $(date +%S) % 2))" -eq 0 ]; then
+                echo "        "
+            else
+                echo "[$BAT ${CAPACITY}%]"
+            fi
+        else
+            echo "[$BAT ${CAPACITY}%]"
+        fi
+
+        echo "$delim"
+    done
 
     # TIME & DATE
     date '+%a %F %H:%M:%S'
