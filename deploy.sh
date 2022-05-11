@@ -14,6 +14,15 @@ prompt () {
     esac
 }
 
+prepdirs () {
+    PREPDIRS=".config .local/share"
+    for PREPDIR in $PREPDIRS; do
+        [ ! -e "$HOME/$PREPDIR" ] && mkdir -p "$HOME/$PREPDIR"
+    done
+}
+
+prepdirs
+
 prompt "Prompt to stow every folder individually?" "n" "[y/N]"
 [ "$ANSWER" = "y" ] && echo "" && NOPROMPT="n" || NOPROMPT="y"
 
