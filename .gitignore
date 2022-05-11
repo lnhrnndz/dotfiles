@@ -1,0 +1,3 @@
+local/.local/share
+nvim/.config/nvim/plugged
+tmux/.config/tmux/pluggins
