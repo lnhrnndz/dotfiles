@@ -3,5 +3,5 @@
 # example usage:
 # ./prompt "Shutdown?" "poweroff"
 
-[ "$(printf "No\\nYes" | dmenu -i -p "$1")" \
-= "Yes" ] && $2
+[ "$(printf "no\\nyes" | dmenu -l 2 -bw 4 -p "$1 ")" \
+= "yes" ] && $2

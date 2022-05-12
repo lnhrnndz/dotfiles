@@ -1,20 +1,18 @@
 # dmenu
 super + p
-    dmenu_run -m 0 -i -c -l 10
-super + shift + p
-    dmenu_run -m 0 -i
+    dmenu_run -m 0 -l 8 -bw 4
 
 # volume
 XF86AudioMute
-    chvol togglemute
+    volume togglemute
 XF86Audio{Raise,Lower}Volume
-    chvol {up,down} 5
+    volume {up,down} 5
 shift + XF86Audio{Raise,Lower}Volume
-    chvol {up,down} 2
+    volume {up,down} 2
 F1
-    chvol togglemute
+    volume togglemute
 F{3,2}
-    chvol {up,down} 5
+    volume {up,down} 5
 
 # power
 # change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/logind/login.conf for systemd)
@@ -35,9 +33,9 @@ super + x
 super + s
     dmenuscripts
 super + c
-    chcol
+    colorscheme
 super + m; {1,2,3}
-    chmon {0,1,2}
+    displayselect {0,1,2}
 
 # apps
 super + o ; {f,q}

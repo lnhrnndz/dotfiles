@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ -n "$1" ]; then
+    setxkbmap "$1"
+    exit
+fi
+
+OPTIONS="\
+us
+ch"
+
+n="$(echo "$OPTIONS" | tr -d ' ' | wc -w)"
+
+CHOICE=$(echo "$OPTIONS" | dmenu -m 0 -l "$n" -bw 4 -p "Select layout")
+
+[ -n "$CHOICE" ] && setxkbmap "$CHOICE"

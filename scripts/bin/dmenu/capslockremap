@@ -10,9 +10,11 @@ Backspace
 nocaps
 None"
 
-n="$(echo "$options" | tr -d ' ' | wc -w)"
+n="$(echo "$options" | wc -w)"
 
-choice=$(echo "$options" | dmenu -m 0 -c -i -l "$n" -p "Select remap") && setxkbmap -option
+choice=$(echo "$options" | dmenu -m 0 -l "$n" -bw 4 -p "set capslock remap ")
+[ -z "$choice" ] && exit 1
+setxkbmap -option
 
 case "$choice" in 
     "Capslock")

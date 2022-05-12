@@ -11,7 +11,7 @@ USB Dock"
 
 n=$(echo "$sinks" | tr -d ' ' | wc -w)
 
-sink=$(echo "$sinks" | dmenu -m 0 -c -i -l "$n" -p "Select sink")
+sink=$(echo "$sinks" | dmenu -m 0 -l "$n" -bw 4 -p "select sink")
 
 case "$sink" in 
     "Laptop stereo")
@@ -30,4 +30,5 @@ case "$sink" in
     "USB Dock")
         pactl set-default-sink alsa_output.usb-DisplayLink_USB_3.0_Dual_Video_Dock_ABCD01210017427-02.iec958-stereo
         ;;
+    *) exit 1
 esac

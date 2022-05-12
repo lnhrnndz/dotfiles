@@ -7,8 +7,8 @@ critical="#[bg=colour160,fg=colour255]"
 
 for BATTERY in /sys/class/power_supply/BAT* ; do
 
-    battery="$(cat ${BATTERY}/capacity)"
-    batterystatus="$(cat ${BATTERY}/status)"
+   battery="$(cat "${BATTERY}"/capacity)"
+    batterystatus="$(cat "${BATTERY}"/status)"
 
     if [ "$batterystatus" = Charging ] && [ "$battery" -lt 99 ]; then
         printf "%s %s%% " "$charging" "$battery"

@@ -15,12 +15,9 @@ cancel"
 
 opts="$(echo "$options" | tr -d ' ')"
 
-n=0
-for _ in $opts; do
-    n=$(( n + 1))
-done
+n=$(echo "$options" | wc -l)
 
-choice=$(echo "$options" | dmenu -c -i -l $n -p "What do?")
+choice=$(echo "$options" | dmenu -l "$n" -bw 4 -p "what do?")
 
 case "$choice" in 
     lock)
