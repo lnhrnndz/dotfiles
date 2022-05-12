@@ -1,7 +1,4 @@
-" github.com/lnhrnndz
-
-
-
+" github.com/lnhrnndz/dotfiles
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'lnhrnndz/xresources-nvim'
@@ -72,7 +69,6 @@ au CmdlineLeave * set relativenumber   | redraw
 
 
 " statusline
-
 function! GitBranch()
     return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
@@ -108,9 +104,6 @@ set statusline+=\ \[%{&fileformat}\]
 set statusline+=\ %#TermCursor#
 set statusline+=\ %p%%\ %l:%c
 set statusline+=\ 
-
-" set stl=%#TermCursor#%#TermCursor#\ %{g:modeMap[mode()]}\ %#TermCursor#%#DiffChange#%{StatuslineGit()}%#ColorColumn#\ [%n]\ %t\ %m%r%=%<\ %y\ %#StatusLine#\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}]\ %#TermCursor#\ %p%%\ %l:%c\ 
-
 
 
 " remaps
@@ -156,10 +149,6 @@ nmap <leader>9 :b9<CR>
 nmap <leader>0 :b
 nmap <leader><TAB> <C-^>
 
-" nmap <leader>h :wincmd h<CR>
-" nmap <leader>j :wincmd j<CR>
-" nmap <leader>k :wincmd k<CR>
-" nmap <leader>l :wincmd l<CR>
 nmap <leader>h <C-w>h
 nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
@@ -171,14 +160,6 @@ nnoremap <leader>R :s//gc<Left><Left><left>
 vnoremap <leader>r y:%s//gc<left><left><left><C-R>=escape(@",'/\')<CR><BS>/
 vnoremap <leader>R y:s//gc<left><left><left><C-R>=escape(@",'/\')<CR><BS>/
 vnoremap / y/<C-R>=escape(@",'/\')<CR><BS>
-
-" inoremap { {}<Esc>i
-" inoremap [ []<Esc>i
-" inoremap ( ()<Esc>i
-" inoremap < <><Esc>i
-" inoremap " ""<Esc>i
-" inoremap ' ''<Esc>i
-" inoremap ` ``<Esc>i
 
 inoremap {<CR> {<CR><BS>}<Esc>O
 inoremap [<CR> [<CR><BS>]<Esc>O
