@@ -17,3 +17,5 @@ rm "$HOME/.Xresources"
 ln -s "$HOME/Xresources/$choice" "$HOME/.Xresources"
 
 xrdb "$HOME/.Xresources"
+
+pkill -USR1 st
