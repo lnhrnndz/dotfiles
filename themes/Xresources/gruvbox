@@ -11,11 +11,11 @@ name:   gruvbox
 Xcursor.theme: Bibata-Modern-Classic
 
 ! hard contrast: *background: #1d2021
-*background: #282828
+*background: #131516
 ! soft contrast: *background: #32302f
 *foreground: #ebdbb2
 ! Black + DarkGrey
-*color0:  #282828
+*color0:  #131516
 *color8:  #928374
 ! DarkRed + Red
 *color1:  #cc241d
@@ -40,3 +40,51 @@ Xcursor.theme: Bibata-Modern-Classic
 *color15: #ebdbb2
 
 *color16: #32302f
+
+
+dwm.normfgcolor:                #ebdbb2
+dwm.normbgcolor:                #131516
+dwm.normbordercolor:            #928374
+dwm.normfloatcolor:             #928374
+dwm.selfgcolor:                 #131516
+dwm.selbgcolor:                 #689d6a
+dwm.selbordercolor:             #458588
+dwm.selfloatcolor:              #458588
+dwm.titlenormfgcolor:           #ebdbb2
+dwm.titlenormbgcolor:           #131516
+dwm.titlenormbordercolor:       #FF0000
+dwm.titlenormfloatcolor:        #FF0000
+dwm.titleselfgcolor:            #131516
+dwm.titleselbgcolor:            #689d6a
+dwm.titleselbordercolor:        #FF0000
+dwm.titleselfloatcolor:         #FF0000
+dwm.tagsnormfgcolor:            #ebdbb2
+dwm.tagsnormbgcolor:            #131516
+dwm.tagsnormbordercolor:        #FF0000
+dwm.tagsnormfloatcolor:         #FF0000
+dwm.tagsselfgcolor:             #131516
+dwm.tagsselbgcolor:             #b16286
+dwm.tagsselbordercolor:         #FF0000
+dwm.tagsselfloatcolor:          #00FFFF
+dwm.hidnormfgcolor:             #ebdbb2
+dwm.hidnormbgcolor:             #458588
+dwm.hidselfgcolor:              #ebdbb2
+dwm.hidselbgcolor:              #689d6a
+dwm.urgfgcolor:                 #ebdbb2
+dwm.urgbgcolor:                 #cc241d
+dwm.urgbordercolor:             #cc241d
+dwm.urgfloatcolor:              #cc241d
+
+
+dmenu.foreground:       #ebdbb2
+dmenu.background:       #131516
+dmenu.selforeground:    #131516
+dmenu.selbackground:    #98971a
+dmenu.outbackground:    #FF0000
+dmenu.outforeground:    #00FF00
+dmenu.bordercolor:      #d79921
+
+dmenu.selhlforeground:  #131516
+dmenu.selhlbackground:  #b8bb26
+dmenu.hlforeground:     #ebdbb2
+dmenu.hlbackground:     #32302f
