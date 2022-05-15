@@ -23,6 +23,12 @@ XF86PowerOff
 XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
+# scrot
+super + shift + s
+    scrot -s "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"
+alt + shift + s
+    scrot "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"
+
 # dunst
 super + grave
     dunstctl history-pop
