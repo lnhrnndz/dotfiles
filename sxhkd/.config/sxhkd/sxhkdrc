@@ -40,8 +40,6 @@ super + s
     dmenuscripts
 super + c
     colorscheme
-super + m; {1,2,3}
-    displayselect {0,1,2}
 
 # apps
 super + o ; {f,q}
