@@ -6,16 +6,10 @@ xbanish &
 
 setxkbmap -option caps:ctrl_modifier
 
+dunst &
+dwm-status &
 
-while type dwm > /dev/null; do
-    pkill notification-da
-    dunst &
-    pkill dwm-status
-    dwm-status &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
 
-    pkill sxhkd
-    sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-    sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
-
-    dwm && continue || break
-done
+dwm
