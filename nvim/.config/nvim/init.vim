@@ -13,11 +13,13 @@ call plug#end()
 
 colorscheme xresources
 
-" when using dracula theme within tmux disable italics
+" special rules when in tmux session
 if (empty($TMUX))
     let g:dracula_italic = 1
+    set mouse=a
 else
     let g:dracula_italic = 0
+    set mouse=n
 endif
 
 let $FZF_DEFAULT_OPTS='--reverse'
@@ -33,13 +35,11 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set visualbell
-set mouse=a
 set termguicolors
 set encoding=utf-8
 set noerrorbells
 set scrolloff=8
 set signcolumn=yes
-" set nu rnu
 set cursorline
 set ignorecase smartcase
 set incsearch
