@@ -14,6 +14,8 @@ status() {
 
     echo "[NET $NETWORK]"
 
+    ip link | grep -q tun0 && echo "[VPN]"
+
     echo "$delim"
 
     # VOLUME
