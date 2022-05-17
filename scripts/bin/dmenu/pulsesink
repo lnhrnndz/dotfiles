@@ -1,34 +1,41 @@
 #!/bin/sh
 
+# add your own sinks to the following map
+sinkmap="\
+Laptop          alsa_output.pci-0000_00_1f.3.analog-stereo
+WH-1000XM4      bluez_sink.F8_4E_17_84_33_1B.a2dp_sink
+Logi            bluez_sink.7C_96_D2_BA_DE_CC.a2dp_sink
+Dock            alsa_output.usb-DisplayLink_USB_3.0_Dual_Video_Dock_ABCD01210017427-02.iec958-stereo"
+
 current=$(pactl get-default-sink)
-
-sinks="\
+other=$(pactl list short sinks | awk '{print $2}' | grep -v "$current")
+available="\
 $current
-Laptop stereo
-WH-1000XM4
-Logi
-USB Dock"
+$other"
 
-n=$(echo "$sinks" | tr -d ' ' | wc -w)
+sinks=
+for sink in $available; do
+    normalname=$(echo "$sinkmap" | awk "/$sink/{print \$1}")
+    [ -z "$normalname" ] && normalname="$sink"
 
-sink=$(echo "$sinks" | dmenu -m 0 -l "$n" -bw 4 -p "select sink")
+    if [ -z "$sinks" ]; then
+        sinks="$normalname"
+    else
+        sinks="$sinks
+$normalname"
+    fi
+done
 
-case "$sink" in 
-    "Laptop stereo")
-        pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
-        ;;
-    "WH-1000XM4")
-        bluetoothctl connect F8:4E:17:84:33:1B
-        sleep 1s
-        pactl set-default-sink bluez_sink.F8_4E_17_84_33_1B.a2dp_sink
-        ;;
-    "Logi")
-        bluetoothctl connect 7C:96:D2:BA:DE:CC
-        sleep 1s
-        pactl set-default-sink bluez_sink.7C_96_D2_BA_DE_CC.a2dp_sink
-        ;;
-    "USB Dock")
-        pactl set-default-sink alsa_output.usb-DisplayLink_USB_3.0_Dual_Video_Dock_ABCD01210017427-02.iec958-stereo
-        ;;
-    *) exit 1
-esac
+chosen=$(echo "$sinks" | awk '{print $1}' | dmenu -m 0 -l 10 -bw 4 -p "select sink")
+
+[ -z "$chosen" ] && exit 1
+
+sink=$(echo "$sinkmap" | awk "/$chosen/{print \$2}")
+
+device=$(echo "$sink" | awk -F"." '{print $1}')
+if [ "$device" = "bluez_sink" ]; then
+    macaddr=$(echo "$sink" | awk -F"." '{print $2}' | sed 's/_/:/g')
+    bluetoothctl connect "$macaddr"
+fi
+
+pactl set-default-sink "$sink"
