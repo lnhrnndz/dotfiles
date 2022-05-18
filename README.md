@@ -10,8 +10,10 @@ Dotfiles include but are not limited to:
 - sxhkd
 - zshrc
 - xinitrc
+- dunst
 - multiple Xresources
 - some scripts
+- some fonts
 
 Other applications I use (not included in dotfiles):
 - [dwm](https://github.com/lnhrnndz/dwm)
