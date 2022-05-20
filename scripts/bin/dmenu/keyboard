@@ -1,16 +1,28 @@
 #!/bin/sh
 
-if [ -n "$1" ]; then
-    setxkbmap "$1"
-    exit
-fi
+notify () {
+    dunstify -r 147 "keyboard layout set to $1"
+}
 
 OPTIONS="\
 us
 ch"
 
-n="$(echo "$OPTIONS" | tr -d ' ' | wc -w)"
+if [ -z "$1" ]; then
+    n="$(echo "$OPTIONS" | tr -d ' ' | wc -w)"
 
-CHOICE=$(echo "$OPTIONS" | dmenu -m 0 -l "$n" -bw 4 -p "Select layout")
+    CHOICE=$(echo "$OPTIONS" | dmenu -m 0 -l "$n" -bw 4 -p "Select layout")
 
-[ -n "$CHOICE" ] && setxkbmap "$CHOICE"
+    [ -n "$CHOICE" ] && setxkbmap "$CHOICE" || exit 1
+
+    notify "$CHOICE"
+fi
+
+if [ "$1" = "next" ]; then
+    CURRENT=$(setxkbmap -query | awk '/layout/{print $2}')
+    exit
+else
+    setxkbmap "$1"
+    notify "$1"
+    exit
+fi

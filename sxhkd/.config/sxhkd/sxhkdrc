@@ -40,6 +40,8 @@ super + s
     dmenuscripts
 super + c
     colorscheme
+super + space; {u,c}
+    keyboard {us,ch}
 
 # apps
 super + o ; {f,q}
