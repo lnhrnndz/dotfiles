@@ -110,7 +110,7 @@ set statusline+=\
 
 let mapleader = " "
 
-nnoremap <leader>c :so $VIMRUNTIME/syntax/hitest.vim<CR>
+" nnoremap <leader>c :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
 " terminal
 nnoremap ! :! 
