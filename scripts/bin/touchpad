@@ -7,5 +7,7 @@ case "$1" in
 esac
 
 ID=$(xinput list | awk '/TouchPad/ { print $6 }' | sed 's/id=//')
+[ -z "$ID" ] && \
+    ID=$(xinput list | awk '/Touchpad/ { print $5 }' | sed 's/id=//')
 
 xinput set-prop "$ID" "Device Enabled" "$STATE"
