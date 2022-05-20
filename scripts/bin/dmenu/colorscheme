@@ -12,9 +12,7 @@ choice=$(echo "$options" | dmenu -m 0 -l "$n" -bw 4 -p "set colorscheme ")
 echo "changing colorscheme to $choice"
 echo "some apps may need to restart"
 
-rm "$HOME/.Xresources"
-
-ln -s "$HOME/Xresources/$choice" "$HOME/.Xresources"
+eval "sed -i 's/#include.*$/#include\ \"\/home\/leon\/Xresources\/${choice}\"/' ${HOME}/.Xresources"
 
 xrdb "$HOME/.Xresources"
 

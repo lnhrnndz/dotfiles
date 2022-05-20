@@ -1,21 +1,71 @@
-! Dracula Xresources palette
-*.foreground: #F8F8F2
-*.background: #282A36
-*.color0:     #000000
-*.color8:     #4D4D4D
-*.color1:     #FF5555
-*.color9:     #FF6E67
-*.color2:     #50FA7B
-*.color10:    #5AF78E
-*.color3:     #F1FA8C
-*.color11:    #F4F99D
-*.color4:     #BD93F9
-*.color12:    #CAA9FA
-*.color5:     #FF79C6
-*.color13:    #FF92D0
-*.color6:     #8BE9FD
-*.color14:    #9AEDFE
-*.color7:     #BFBFBF
-*.color15:    #E6E6E6
+#include "/home/leon/Xresources/gruvbox"
+
+Xcursor.theme: Bibata-Modern-Classic
+
+*.foreground: FOREGROUND
+*.background: BACKGROUND
+*.color0:     COLOR00
+*.color1:     COLOR01
+*.color2:     COLOR02
+*.color3:     COLOR03
+*.color4:     COLOR04
+*.color5:     COLOR05
+*.color6:     COLOR06
+*.color7:     COLOR07
+*.color8:     COLOR08
+*.color9:     COLOR09
+*.color10:    COLOR10
+*.color11:    COLOR11
+*.color12:    COLOR12
+*.color13:    COLOR13
+*.color14:    COLOR14
+*.color15:    COLOR15
 
 dwm.borderpx:    2
+
+dwm.normfgcolor:                FOREGROUND
+dwm.normbgcolor:                BACKGROUND
+dwm.normbordercolor:            COLOR08
+dwm.normfloatcolor:             COLOR08
+dwm.selfgcolor:                 COLOR00
+dwm.selbgcolor:                 COLOR06
+dwm.selbordercolor:             COLOR04
+dwm.selfloatcolor:              COLOR04
+dwm.titlenormfgcolor:           FOREGROUND
+dwm.titlenormbgcolor:           BACKGROUND
+dwm.titlenormbordercolor:       #FF0000
+dwm.titlenormfloatcolor:        #FF0000
+dwm.titleselfgcolor:            COLOR00
+dwm.titleselbgcolor:            COLOR06
+dwm.titleselbordercolor:        #FF0000
+dwm.titleselfloatcolor:         #FF0000
+dwm.tagsnormfgcolor:            FOREGROUND
+dwm.tagsnormbgcolor:            BACKGROUND
+dwm.tagsnormbordercolor:        #FF0000
+dwm.tagsnormfloatcolor:         #FF0000
+dwm.tagsselfgcolor:             COLOR00
+dwm.tagsselbgcolor:             COLOR05
+dwm.tagsselbordercolor:         #FF0000
+dwm.tagsselfloatcolor:          #FF0000
+dwm.hidnormfgcolor:             FOREGROUND
+dwm.hidnormbgcolor:             COLOR04
+dwm.hidselfgcolor:              FOREGROUND
+dwm.hidselbgcolor:              COLOR06
+dwm.urgfgcolor:                 FOREGROUND
+dwm.urgbgcolor:                 COLOR01
+dwm.urgbordercolor:             COLOR01
+dwm.urgfloatcolor:              COLOR01
+
+
+dmenu.foreground:       FOREGROUND
+dmenu.background:       BACKGROUND
+dmenu.selforeground:    COLOR00
+dmenu.selbackground:    COLOR02
+dmenu.outbackground:    #FF0000
+dmenu.outforeground:    #FF0000
+dmenu.bordercolor:      COLOR03
+
+dmenu.selhlforeground:  COLOR00
+dmenu.selhlbackground:  COLOR10
+dmenu.hlforeground:     FOREGROUND
+dmenu.hlbackground:     COLOR16

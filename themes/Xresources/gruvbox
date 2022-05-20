@@ -1,90 +1,22 @@
-! -----------------------------------------------------------------------------
-! File: gruvbox-dark.xresources
-! Description: Retro groove colorscheme generalized
-! Author: morhetz <morhetz@gmail.com>
-! Source: https://github.com/morhetz/gruvbox-generalized
-! Last Modified: 6 Sep 2014
-! -----------------------------------------------------------------------------
+name: gruvbox
 
-name:   gruvbox
+#define BACKGROUND #131516
+#define FOREGROUND #ebdbb2
+#define COLOR00  #131516
+#define COLOR08  #928374
+#define COLOR01  #cc241d
+#define COLOR09  #fb4934
+#define COLOR02  #98971a
+#define COLOR10  #b8bb26
+#define COLOR03  #d79921
+#define COLOR11  #fabd2f
+#define COLOR04  #458588
+#define COLOR12  #83a598
+#define COLOR05  #b16286
+#define COLOR13  #d3869b
+#define COLOR06  #689d6a
+#define COLOR14  #8ec07c
+#define COLOR07  #a89984
+#define COLOR15  #ebdbb2
 
-Xcursor.theme: Bibata-Modern-Classic
-
-! hard contrast: *background: #1d2021
-*background: #131516
-! soft contrast: *background: #32302f
-*foreground: #ebdbb2
-! Black + DarkGrey
-*color0:  #131516
-*color8:  #928374
-! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
-! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
-! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
-! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
-! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
-! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
-! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
-
-*color16: #32302f
-
-
-dwm.normfgcolor:                #ebdbb2
-dwm.normbgcolor:                #131516
-dwm.normbordercolor:            #928374
-dwm.normfloatcolor:             #928374
-dwm.selfgcolor:                 #131516
-dwm.selbgcolor:                 #689d6a
-dwm.selbordercolor:             #458588
-dwm.selfloatcolor:              #458588
-dwm.titlenormfgcolor:           #ebdbb2
-dwm.titlenormbgcolor:           #131516
-dwm.titlenormbordercolor:       #FF0000
-dwm.titlenormfloatcolor:        #FF0000
-dwm.titleselfgcolor:            #131516
-dwm.titleselbgcolor:            #689d6a
-dwm.titleselbordercolor:        #FF0000
-dwm.titleselfloatcolor:         #FF0000
-dwm.tagsnormfgcolor:            #ebdbb2
-dwm.tagsnormbgcolor:            #131516
-dwm.tagsnormbordercolor:        #FF0000
-dwm.tagsnormfloatcolor:         #FF0000
-dwm.tagsselfgcolor:             #131516
-dwm.tagsselbgcolor:             #b16286
-dwm.tagsselbordercolor:         #FF0000
-dwm.tagsselfloatcolor:          #00FFFF
-dwm.hidnormfgcolor:             #ebdbb2
-dwm.hidnormbgcolor:             #458588
-dwm.hidselfgcolor:              #ebdbb2
-dwm.hidselbgcolor:              #689d6a
-dwm.urgfgcolor:                 #ebdbb2
-dwm.urgbgcolor:                 #cc241d
-dwm.urgbordercolor:             #cc241d
-dwm.urgfloatcolor:              #cc241d
-
-
-dmenu.foreground:       #ebdbb2
-dmenu.background:       #131516
-dmenu.selforeground:    #131516
-dmenu.selbackground:    #98971a
-dmenu.outbackground:    #FF0000
-dmenu.outforeground:    #00FF00
-dmenu.bordercolor:      #d79921
-
-dmenu.selhlforeground:  #131516
-dmenu.selhlbackground:  #b8bb26
-dmenu.hlforeground:     #ebdbb2
-dmenu.hlbackground:     #32302f
+#define COLOR16  #32302f
