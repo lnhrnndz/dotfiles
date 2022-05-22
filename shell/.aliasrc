@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # command shortcuts
 alias ls="ls --color=auto --group-directories-first"
 alias ll="ls -l"
@@ -22,6 +24,9 @@ alias sxhkdrc="$EDITOR $HOME/.config/sxhkd/sxhkdrc"
 alias tmuxcf="$EDITOR $HOME/.config/tmux/.tmux.conf"
 
 
+clip() {
+    printf "%s" "$1" | xclip -sel clipboard
+}
 
 # copy/paste file contents to clipcoard on WSL
 copy() {
