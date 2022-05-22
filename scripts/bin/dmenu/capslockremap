@@ -1,8 +1,8 @@
 #!/bin/sh
 
 options="\
-Capslock
 Control
+Capslock
 Super
 Escape
 Swap Escape
