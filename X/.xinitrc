@@ -12,4 +12,4 @@ dwm-status &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
 
-dwm
+exec dbus-run-session dwm
