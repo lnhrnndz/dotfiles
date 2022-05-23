@@ -9,6 +9,8 @@ Plug 'ap/vim-css-color'
 Plug 'vimwiki/vimwiki'
 
 Plug 'tpope/vim-fugitive'
+
+Plug 'preservim/nerdtree'
 call plug#end()
 
 colorscheme xresources
