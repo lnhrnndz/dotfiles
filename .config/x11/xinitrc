@@ -12,4 +12,6 @@ dwm-status &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrcdwm &
 
+picom --experimental-backends -b
+
 exec dbus-run-session dwm
