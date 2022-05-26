@@ -39,6 +39,5 @@ setopt globdots
 set -o vi
 
 
-[ -f ~/.profile ] && source ~/.profile
-[ -f ~/.aliasrc ] && source ~/.aliasrc
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.config/shell/profile ] && source ~/.config/shell/profile
+[ -f ~/.config/shell/aliasrc ] && source ~/.config/shell/aliasrc

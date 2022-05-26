@@ -1,4 +1,4 @@
-#include "/home/leon/Xresources/gruvbox"
+#include "/home/leon/.config/x11/Xresources.d/gruvbox"
 
 Xcursor.theme: Bibata-Modern-Classic
 
