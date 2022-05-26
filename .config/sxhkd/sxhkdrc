@@ -1,7 +1,3 @@
-# dmenu
-super + p
-    dmenu_run -m 0 -l 8 -bw 4
-
 # volume
 XF86AudioMute
     volume togglemute
@@ -34,15 +30,3 @@ super + grave
     dunstctl history-pop
 super + x
     dunstctl close-all
-
-# scripts
-super + s
-    dmenuscripts
-super + c
-    colorscheme
-super + space; {u,c}
-    keyboard {us,ch}
-
-# apps
-super + o ; {f,q}
-    {firefox,qbittorrent}
