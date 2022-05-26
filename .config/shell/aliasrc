@@ -7,6 +7,7 @@ alias la="ls -la"
 
 alias suspend="loginctl suspend"
 
+alias scrot='scrot "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
 alias tree="tree --dirsfirst -F"
 alias dotfilestree="tree -a . -I .git"
