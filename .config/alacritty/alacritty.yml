@@ -1,9 +1,4 @@
-# configuration for alacritty, the GPU enhanced terminal emulator.
-
-schemes:
-# Colors (Gruvbox dark)
 colors:
-  # Default colors
   primary:
     background: '#131516'
     foreground: '#ebdbb2'
@@ -31,12 +26,9 @@ colors:
     white:   '#ebdbb2'
 
 env:
-  TERM: xterm-256color
   WINIT_X11_SCALE_FACTOR: "1"
 
 window:
-  dynamic_padding: false
-
   padding:
     x: 8
     y: 4
@@ -64,7 +56,7 @@ font:
     x: 0
     y: 0
 
-cursor:
-  style: Block
-
 live_config_reload: true
+
+key_bindings:
+  - { key: Return, mods: Super|Shift, action: SpawnNewInstance }
