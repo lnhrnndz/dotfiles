@@ -1,0 +1,70 @@
+# configuration for alacritty, the GPU enhanced terminal emulator.
+
+schemes:
+# Colors (Gruvbox dark)
+colors:
+  # Default colors
+  primary:
+    background: '#131516'
+    foreground: '#ebdbb2'
+
+  # Normal colors
+  normal:
+    black:   '#131516'
+    red:     '#cc241d'
+    green:   '#98971a'
+    yellow:  '#d79921'
+    blue:    '#458588'
+    magenta: '#b16286'
+    cyan:    '#689d6a'
+    white:   '#a89984'
+
+  # Bright colors
+  bright:
+    black:   '#928374'
+    red:     '#fb4934'
+    green:   '#b8bb26'
+    yellow:  '#fabd2f'
+    blue:    '#83a598'
+    magenta: '#d3869b'
+    cyan:    '#8ec07c'
+    white:   '#ebdbb2'
+
+env:
+  TERM: xterm-256color
+  WINIT_X11_SCALE_FACTOR: "1"
+
+window:
+  dynamic_padding: false
+
+  padding:
+    x: 8
+    y: 8
+
+font:
+  normal:
+    family: JetBrains Mono
+    style: Regular
+
+  bold:
+    family: JetBrains Mono
+    style: Bold
+
+  italic:
+    family: JetBrains Mono
+    style: Italic
+
+  bold_italic:
+    family: JetBrains Mono
+    style: Bold Italic
+
+  size: 12
+
+  offset:
+    x: 0
+    y: 0
+
+cursor:
+  style: Block
+
+live_config_reload: true
