@@ -169,3 +169,7 @@ inoremap (<CR> (<CR><BS>)<Esc>O
 
 nnoremap <leader>s :! shellcheck %<CR>
 nnoremap <leader>S :vsplit<CR>:terminal shellcheck %<CR>
+
+nnoremap <leader>mo :set mouse= <cr>
+nnoremap <leader>mn :set mouse=n<cr>
+nnoremap <leader>ma :set mouse=a<cr>
