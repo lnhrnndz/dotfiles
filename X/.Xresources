@@ -25,7 +25,7 @@ dwm.borderpx:    2
 
 dwm.normfgcolor:                FOREGROUND
 dwm.normbgcolor:                BACKGROUND
-dwm.normbordercolor:            COLOR08
+dwm.normbordercolor:            BACKGROUND
 dwm.normfloatcolor:             COLOR08
 dwm.selfgcolor:                 COLOR00
 dwm.selbgcolor:                 COLOR06
@@ -68,4 +68,4 @@ dmenu.bordercolor:      COLOR03
 dmenu.selhlforeground:  COLOR00
 dmenu.selhlbackground:  COLOR10
 dmenu.hlforeground:     FOREGROUND
-dmenu.hlbackground:     COLOR16
+dmenu.hlbackground:     BACKGROUND
