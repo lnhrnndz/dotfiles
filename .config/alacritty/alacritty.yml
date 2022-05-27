@@ -59,4 +59,4 @@ font:
 live_config_reload: true
 
 key_bindings:
-  - { key: Return, mods: Super|Shift, action: SpawnNewInstance }
+  - { key: Return, mods: alt|Shift, action: SpawnNewInstance }
