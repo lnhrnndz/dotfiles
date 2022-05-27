@@ -21,8 +21,6 @@ Xcursor.theme: Bibata-Modern-Classic
 *.color14:    COLOR14
 *.color15:    COLOR15
 
-dwm.borderpx:    2
-
 dwm.normfgcolor:                FOREGROUND
 dwm.normbgcolor:                BACKGROUND
 dwm.normbordercolor:            BACKGROUND

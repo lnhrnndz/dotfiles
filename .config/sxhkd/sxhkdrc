@@ -1,23 +1,20 @@
-# volume
-XF86AudioMute
-    volume togglemute
-XF86Audio{Raise,Lower}Volume
-    volume {up,down} 5
-shift + XF86Audio{Raise,Lower}Volume
-    volume {up,down} 2
-F1
-    volume togglemute
-F{3,2}
-    volume {up,down} 5
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
 
-# power
-# change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/logind/login.conf for systemd)
-XF86PowerOff
-    powermenu
+# quit dwm
+super + shift + q
+    pkill -9 dwm
 
-# brightness
-XF86MonBrightness{Up,Down}
-    light -{A,U} 10
+# ============
+# APPLICATIONS
+# ============
+
+super + shift + Return
+    alacritty
+
+super + p
+    rofi -show drun
 
 # scrot
 super + shift + s
@@ -30,3 +27,27 @@ super + grave
     dunstctl history-pop
 super + x
     dunstctl close-all
+
+# ======
+# SYSTEM
+# ======
+
+# change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/logind/login.conf for systemd)
+XF86PowerOff
+    powermenu
+
+# volume
+XF86AudioMute
+    volume togglemute
+XF86Audio{Raise,Lower}Volume
+    volume {up,down} 5
+shift + XF86Audio{Raise,Lower}Volume
+    volume {up,down} 2
+F1
+    volume togglemute
+F{3,2}
+    volume {up,down} 5
+
+# brightness
+XF86MonBrightness{Up,Down}
+    light -{A,U} 10

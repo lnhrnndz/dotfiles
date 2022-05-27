@@ -1,3 +1,0 @@
-# dwm
-super + shift + q
-    prompt "Exit dwm?" "pkill -9 dwm"
