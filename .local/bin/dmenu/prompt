@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# example usage:
-# ./prompt "Shutdown?" "poweroff"
-
-[ "$(printf "no\\nyes" | dmenu -l 2 -bw 4 -p "$1 ")" \
-= "yes" ] && $2

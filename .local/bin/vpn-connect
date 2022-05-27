@@ -1,8 +1,0 @@
-#!/bin/sh
-
-CONFS=$(find "$HOME"/vpn/*.ovpn)
-AUTH="$HOME/vpn/auth"
-
-CONF=$(echo "$CONFS" | head -n 1)
-
-doas openvpn --config "$CONF" --auth-user-pass "$AUTH"
