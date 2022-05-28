@@ -14,6 +14,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 call plug#end()
 
+" update vim-gitgutter only on startup and save
+" depends on .config/nvim/after/plugin/gitgutter.vim entry
+autocmd VimEnter * GitGutter
+autocmd BufWritePost * GitGutter
+
 colorscheme xresources
 
 " special rules when in tmux session
