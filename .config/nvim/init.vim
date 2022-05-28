@@ -9,6 +9,7 @@ Plug 'ap/vim-css-color'
 Plug 'vimwiki/vimwiki'
 
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'preservim/nerdtree'
 call plug#end()
