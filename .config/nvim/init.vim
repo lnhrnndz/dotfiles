@@ -119,9 +119,6 @@ let mapleader = " "
 nnoremap ! :! 
 " vnoremap ! y:! <CR>=escape(@",'/\')
 
-" write changes and source file
-map <leader>% :w<CR>:so %<CR>
-
 " application shortcuts
 map <leader>n :NERDTreeToggle<CR>
 map <leader>f :FZF<CR>
@@ -151,6 +148,9 @@ nmap <leader>8 :b8<CR>
 nmap <leader>9 :b9<CR> 
 nmap <leader>0 :b
 nmap <leader><TAB> <C-^>
+
+nmap <leader>" :vsplit<CR>
+nmap <leader>% :split<CR>
 
 nmap <leader>h <C-w>h
 nmap <leader>j <C-w>j
