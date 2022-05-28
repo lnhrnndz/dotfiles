@@ -62,12 +62,13 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " hybrid relative numbers
 set number
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
-  autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
+    autocmd!
+    autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
+    autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
 augroup END
 au CmdLineEnter * set norelativenumber | redraw
-au CmdlineLeave * set relativenumber   | redraw
+au CmdlineLeave * if (match("nerdtree",&filetype)) | set relativenumber | redraw | endif
+
 
 
 " statusline
