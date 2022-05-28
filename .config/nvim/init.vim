@@ -157,6 +157,11 @@ nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
 nmap <leader>l <C-w>l
 
+nmap <C-h> :10winc < <CR>
+nmap <C-j> :5winc - <CR>
+nmap <C-k> :5winc + <CR>
+nmap <C-l> :10winc > <CR>
+
 nnoremap <leader>r :%s//gc<Left><Left><left>
 nnoremap <leader>R :s//gc<Left><Left><left>
 
