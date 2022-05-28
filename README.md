@@ -1,14 +1,14 @@
 # My dotfiles
 
-OS: [Arch](https://archlinux.org/)
-WM: [dwm](https://github.com/lnhrnndz/dwm)
-Terminal: [alacritty](https://github.com/alacritty/alacritty)
-Shell: zsh
-Editor: [neovim](https://github.com/neovim/neovim) / [vscode](https://aur.archlinux.org/packages/visual-studio-code-bin)
-Compositor: [picom-git](https://github.com/yshui/picom)
-Launcher: [rofi](https://github.com/davatorium/rofi)
-Font: [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
-Cursor: [Bibata](https://github.com/ful1e5/Bibata_Cursor)
+OS: [Arch](https://archlinux.org/) <br>
+WM: [dwm](https://github.com/lnhrnndz/dwm) <br>
+Terminal: [alacritty](https://github.com/alacritty/alacritty) <br>
+Shell: zsh <br>
+Editor: [neovim](https://github.com/neovim/neovim) / [vscode](https://aur.archlinux.org/packages/visual-studio-code-bin) <br>
+Compositor: [picom-git](https://github.com/yshui/picom) <br>
+Launcher: [rofi](https://github.com/davatorium/rofi) <br>
+Font: [JetBrains Mono](https://www.jetbrains.com/lp/mono/) <br>
+Cursor: [Bibata](https://github.com/ful1e5/Bibata_Cursor) <br>
 
 ## Installation
 
@@ -39,8 +39,8 @@ stow -S -v dotfiles -t ~
 NOTE: qBittorrent will undergo no changes
 see .config/qBittorrent/themes/README.md
 
+## Uninstall
 
-To uninstall run
 ```bash
 stow -D -v dotfiles -t ~
 ```
@@ -49,5 +49,5 @@ Or remove symlinks individually
 
 ### Command replacements
 
-[exa](https://github.com/ogham/exa)
-[bat](https://github.com/sharkdp/bat)
+- [`exa`](https://github.com/ogham/exa)
+- [`bat`](https://github.com/sharkdp/bat)
