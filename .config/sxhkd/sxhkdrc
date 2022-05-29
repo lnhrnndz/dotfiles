@@ -14,7 +14,7 @@ super + shift + Return
     alacritty
 
 super + p
-    rofi -show drun
+    rofi -show drun -sort
 
 # scrot
 super + shift + s
