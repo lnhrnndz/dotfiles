@@ -15,6 +15,12 @@ super + shift + Return
 
 super + p
     rofi -show drun -sort
+super + shift + p
+    rofi -show run -sort
+super + control + p
+    rofi -show ssh -sort
+alt + Tab
+    rofi -show window -sort
 
 # scrot
 super + shift + s
