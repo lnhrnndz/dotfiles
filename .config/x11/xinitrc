@@ -5,6 +5,7 @@ xrdb -merge $HOME/.Xresources
 xbanish &
 setxkbmap -option caps:ctrl_modifier
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
+xset r rate 200 36
 
 picom --experimental-backends -b
 feh --bg-scale Pictures/Wallpapers/archbox.png
