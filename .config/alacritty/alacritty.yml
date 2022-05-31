@@ -59,4 +59,8 @@ font:
 live_config_reload: true
 
 key_bindings:
-  - { key: Return, mods: alt|Shift, action: SpawnNewInstance }
+  - { key: Return,    mods: alt|Shift,  action: SpawnNewInstance }
+  - { key: PageUp,                      action: ScrollPageUp     }
+  - { key: PageDown,                    action: ScrollPageDown   }
+  - { key: K,         mods: alt,        action: ScrollPageUp     }
+  - { key: J,         mods: alt,        action: ScrollPageDown   }
