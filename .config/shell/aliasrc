@@ -5,6 +5,8 @@ alias ls="exa --group-directories-first"
 alias ll="ls -l"
 alias la="ls -la"
 
+alias lg="lazygit"
+
 alias suspend="loginctl suspend"
 
 alias scrot='scrot "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"'
