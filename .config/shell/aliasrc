@@ -4,6 +4,7 @@
 alias ls="exa --group-directories-first"
 alias ll="ls -l"
 alias la="ls -la"
+alias cat="bat"
 
 alias lg="lazygit"
 
