@@ -24,9 +24,11 @@ alt + Tab
 
 # scrot
 super + shift + s
-    scrot -s "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"
+    screenshot select
+super + s
+    screenshot focused
 alt + shift + s
-    scrot "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"
+    screenshot
 
 # dunst
 super + grave
