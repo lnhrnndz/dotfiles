@@ -40,7 +40,7 @@ super + x
 # SYSTEM
 # ======
 
-# change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/logind/login.conf for systemd)
+# change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/systemd/login.conf for systemd, then run sudo systemctl restart systemd-logind.service)
 XF86PowerOff
     powermenu
 
