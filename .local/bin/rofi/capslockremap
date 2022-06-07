@@ -1,0 +1,34 @@
+#!/bin/sh
+
+options="\
+Control
+Capslock
+Super
+Escape
+Swap Escape
+Backspace
+nocaps
+None"
+
+n="$(echo "$options" | wc -w)"
+
+choice=$(echo "$options" | rofi -dmenu -l "$n" -p "set capslock remap ")
+[ -z "$choice" ] && exit 1
+setxkbmap -option
+
+case "$choice" in
+    "Capslock")
+        remap="capslock" ;;
+    "Control")
+        remap="ctrl_modifier" ;;
+    "Super")
+        remap="super" ;;
+    "Escape")
+        remap="escape" ;;
+    "Swap Escape")
+        remap="swapescape" ;;
+    "None")
+        remap="none" ;;
+esac
+
+setxkbmap -option caps:$remap

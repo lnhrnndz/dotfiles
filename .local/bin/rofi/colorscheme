@@ -1,0 +1,18 @@
+#!/bin/sh
+
+options=$(ls "$HOME"/.config/x11/Xresources.d/)
+
+n="$(echo "$options" | tr -d ' ' | wc -w)"
+
+choice=$(echo "$options" | rofi -dmenu -l "$n" -p "set colorscheme ")
+
+[ -z "$choice" ] && echo "chcol: aborting" && exit 1
+
+echo "changing colorscheme to $choice"
+echo "some apps may need to restart"
+
+eval "sed -i 's/#include.*$/#include\ \"\/home\/leon\/.config\/x11\/Xresources.d\/${choice}\"/' ${HOME}/.Xresources"
+
+xrdb "$HOME/.Xresources"
+
+pkill -USR1 st

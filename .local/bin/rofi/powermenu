@@ -1,0 +1,44 @@
+#!/bin/sh
+
+alias lock="i3lock -e -c 282A36"
+
+options="\
+lock
+suspend
+lock then suspend
+hibernate
+hybrid sleep
+suspend then hibernate
+shut down
+reboot
+cancel"
+
+opts="$(echo "$options" | tr -d ' ')"
+
+n=$(echo "$options" | wc -l)
+
+choice=$(echo "$options" | rofi -dmenu -l "$n" -p "what do?")
+
+case "$choice" in
+    lock)
+        lock ;;
+    suspend)
+        loginctl suspend ;;
+    lock\ then\ suspend)
+        lock
+        sleep 2
+        loginctl suspend
+        ;;
+    hibernate)
+        loginctl hibernate ;;
+    hybrid\ sleep)
+        loginctl hybrid-sleep ;;
+    suspend\ then\ hibernate)
+        loginctl suspend-then-hybernate ;;
+    shut\ down)
+        loginctl poweroff ;;
+    reboot)
+        loginctl reboot ;;
+    cancel)
+        exit 1 ;;
+esac
