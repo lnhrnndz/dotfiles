@@ -8,7 +8,7 @@ sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 xset r rate 200 36
 
 picom --experimental-backends -b
-feh --bg-scale Pictures/Wallpapers/archbox.png
+feh --bg-fill Pictures/Wallpapers/archbox.png
 dunst &
 
 dwm-status &
