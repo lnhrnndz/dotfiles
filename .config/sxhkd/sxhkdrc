@@ -1,8 +1,6 @@
-# make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd; keyboard reload
 
-# quit dwm
 super + shift + q
     pkill -9 dwm
 
@@ -55,10 +53,19 @@ F1
     volume togglemute
 F{3,2}
     volume {up,down} 5
+shift + F{3,2}
+    volume {up,down} 2
 
 # brightness
 XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
 super + space
-    keyboard
+    keyboard next
+
+# ====
+# MISC
+# ====
+
+super + n
+    nvimnote
