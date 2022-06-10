@@ -1,7 +1,10 @@
 #!/bin/sh
 
-setxkbmap -option caps:ctrl_modifier
-xset r rate 200 36
+if [ "$1" = "reload" ]; then
+    setxkbmap -option caps:ctrl_modifier
+    xset r rate 200 36
+    exit 0
+fi
 
 OPTIONS="\
 us
@@ -9,20 +12,21 @@ ch"
 
 n=$(echo "$OPTIONS" | wc -l)
 
-if [ -z "$1" ]; then
-    #n="$(echo "$OPTIONS" | tr -d ' ' | wc -w)"
-
-    CHOICE=$(echo "$OPTIONS" | rofi -dmenu -l "$n" -p "Select layout")
-
-    [ -z "$CHOICE" ] && exit 1
-
-elif [ "$1" = "next" ]; then
+if [ "$1" = "next" ]; then
     CURRENT=$(setxkbmap -query | awk '/layout/{print $2}')
-    exit
+    CURRENTNR=$(echo "$OPTIONS" | awk "/$CURRENT/ { print NR }")
+    NEXTNR=$(( (CURRENTNR) % n + 1 ))
+    CHOICE=$(echo "$OPTIONS" | sed -n "${NEXTNR}p")
+    echo "$CHOICE"
+elif [ -z "$1" ]; then
+    #n="$(echo "$OPTIONS" | tr -d ' ' | wc -w)"
+    CHOICE=$(echo "$OPTIONS" | rofi -dmenu -l "$n" -p "Select layout")
+    [ -z "$CHOICE" ] && exit 1
 else
     echo "$OPTIONS" | grep -q "$1" || exit 2
     CHOICE="$1"
 fi
+
 
 setxkbmap "$CHOICE"
 
