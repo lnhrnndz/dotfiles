@@ -20,6 +20,11 @@ if [ "$1" = "next" ]; then
     echo "$CHOICE"
 elif [ -z "$1" ]; then
     #n="$(echo "$OPTIONS" | tr -d ' ' | wc -w)"
+    if ! which rofi 2> /dev/null > /dev/null; then
+        echo "rofi is not installed"
+        echo "aborting"
+        exit
+    fi
     CHOICE=$(echo "$OPTIONS" | rofi -dmenu -l "$n" -p "Select layout")
     [ -z "$CHOICE" ] && exit 1
 else

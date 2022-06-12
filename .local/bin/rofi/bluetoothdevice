@@ -1,0 +1,29 @@
+#!/bin/sh
+
+DEVICEMAP="\
+WH-1000XM4      F8:4E:17:84:33:1B
+logi            7C:96:D2:BA:DE:CC"
+
+DEVICES=$(bluetoothctl devices)
+
+#MAC_ADDRESSES=$(echo "$DEVICES" | awk '{ print $2 }')
+#
+#for ADDRESS in $MAC_ADDRESSES; do
+#    NAME=$(echo "$DEVICES" | grep "$ADDRESS" | awk -F"$ADDRESS " '{ print $2 }')
+#done
+
+NAMES=$(echo "$DEVICES" | awk -F"..:..:..:..:..:.. " '{ print $2 }')
+
+n=$(echo "$NAMES" | wc -l)
+CHOICE=$(echo "$NAMES" | rofi -dmenu -l "$n" -p "select device")
+if [ -z "$CHOICE" ]; then
+    echo "aborting"
+    exit 1
+elif ! echo "$DEVICES" | grep -q "$CHOICE"; then
+    echo "invalid device"
+    exit 2
+fi
+
+MAC_ADDRESS=$(echo "$DEVICES" | grep "$CHOICE" | awk '{ print $2 }')
+
+bluetoothctl connect "$MAC_ADDRESS"
