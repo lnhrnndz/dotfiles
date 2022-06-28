@@ -7,7 +7,7 @@ export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # default programs
 export EDITOR="nvim"
-export TERM="alacritty"
+export TERM="st-256color"
 export SHELL="zsh"
 export BROWSER="firefox"
 
