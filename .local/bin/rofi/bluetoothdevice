@@ -1,16 +1,6 @@
 #!/bin/sh
 
-DEVICEMAP="\
-WH-1000XM4      F8:4E:17:84:33:1B
-logi            7C:96:D2:BA:DE:CC"
-
 DEVICES=$(bluetoothctl devices)
-
-#MAC_ADDRESSES=$(echo "$DEVICES" | awk '{ print $2 }')
-#
-#for ADDRESS in $MAC_ADDRESSES; do
-#    NAME=$(echo "$DEVICES" | grep "$ADDRESS" | awk -F"$ADDRESS " '{ print $2 }')
-#done
 
 NAMES=$(echo "$DEVICES" | awk -F"..:..:..:..:..:.. " '{ print $2 }')
 
