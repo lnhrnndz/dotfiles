@@ -1,22 +1,57 @@
 #!/bin/sh
 
-ZETTELKASTEN=$(date +%F)
+FOLDER="$HOME/wikis/EncyclopediaGalactica/notes/"
+DATE=$(date +%Y%m%d)
 
-FOLDER="$HOME/notes/daily"
-FILE="$FOLDER/${ZETTELKASTEN}-daily.md"
+hex() {
+    hexas="0123456789abcdef"
+    dec="$1"
 
-if [ ! -f "$FILE" ]; then
-    printf "# %s\n\n" "$ZETTELKASTEN" > "$FILE"
-elif [ -z "$(tail -n 1 "$FILE")" ]; then
-    if tail -n 2 "$FILE" | head -n 1 | grep -q "## ..:.."; then
-        echo "sa"
-    fi
-    echo "hi"
-fi
+    tens=$(( dec / 16 + 1 ))
+    ones=$(( dec % 16 + 1 ))
+    
+    tens=$(echo "$hexas" | cut -c"$tens")
+    ones=$(echo "$hexas" | cut -c"$ones")
 
-st -t note --class note -e \
+    echo "$tens$ones"
+}
+
+new() {
+    ID=0
+    HEX_ID=$(hex "$ID")
+    ZET="$DATE-$HEX_ID.md"
+
+    UNIQUE="false"
+    while [ ! "$UNIQUE" = "true" ]; do
+        if [ ! -f "$ZET" ]; then
+            UNIQUE="true"
+        else
+            ID=$(( ID + 1 ))
+            HEX_ID=$(hex "$ID")
+            ZET="$DATE-$HEX_ID.md"
+        fi
+    done
+}
+daily() {
+    ZET="$DATE.md"
+}
+monthly() {
+    ZET="$(date +%Y%m).md"
+}
+yearly() {
+    ZET="$(date +%Y).md"
+}
+
+case "$1" in
+    "new") new ;;
+    "daily") daily ;;
+    "monthly") monthly ;;
+    "yearly") yearly ;;
+    *) exit ;;
+esac
+
+st -t note -c note -e \
     nvim \
-    -c "cd $FOLDER" -c "norm G2o" \
-    -c "norm i## $(date +%H:%M)" \
-    -c "norm G2o" \
-    "$FILE"
+    -c "cd $FOLDER" \
+    -c "norm i" \
+    "$FOLDER$ZET"
