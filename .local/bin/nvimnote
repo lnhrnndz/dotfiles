@@ -1,0 +1,22 @@
+#!/bin/sh
+
+ZETTELKASTEN=$(date +%F)
+
+FOLDER="$HOME/notes/daily"
+FILE="$FOLDER/${ZETTELKASTEN}-daily.md"
+
+if [ ! -f "$FILE" ]; then
+    printf "# %s\n\n" "$ZETTELKASTEN" > "$FILE"
+elif [ -z "$(tail -n 1 "$FILE")" ]; then
+    if tail -n 2 "$FILE" | head -n 1 | grep -q "## ..:.."; then
+        echo "sa"
+    fi
+    echo "hi"
+fi
+
+st -t note --class note -e \
+    nvim \
+    -c "cd $FOLDER" -c "norm G2o" \
+    -c "norm i## $(date +%H:%M)" \
+    -c "norm G2o" \
+    "$FILE"
