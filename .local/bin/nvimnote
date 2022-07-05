@@ -47,11 +47,17 @@ case "$1" in
     "daily") daily ;;
     "monthly") monthly ;;
     "yearly") yearly ;;
-    *) exit ;;
+    *) 
+        st -t note -c note -e \
+            nvim \
+            -c "cd $FOLDER" \
+            -c "cd .." &
+        exit
+        ;;
 esac
 
 st -t note -c note -e \
     nvim \
     -c "cd $FOLDER" \
     -c "norm i" \
-    "$FOLDER$ZET"
+    "$FOLDER$ZET" &
