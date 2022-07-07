@@ -68,4 +68,4 @@ super + space
 # ====
 
 super + n; {n,d,m,y,Return}
-    nvimnote {new, daily, monthly, yearly, }
+    zet {new, daily, monthly, yearly, }
