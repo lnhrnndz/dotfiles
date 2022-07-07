@@ -1,5 +1,5 @@
 super + Escape
-	pkill -USR1 -x sxhkd; keyboard reload
+    pkill -USR1 -x sxhkd; keyboard reload
 
 super + shift + q
     pkill -9 dwm
@@ -9,10 +9,10 @@ super + shift + q
 # ============
 
 super + shift + Return
-    alacritty
+    st
 
 super + p
-    rofi -show drun -sort
+    dmenu_run
 super + shift + p
     rofi -show run -sort
 super + control + p
@@ -67,5 +67,5 @@ super + space
 # MISC
 # ====
 
-super + n
-    nvimnote
+super + n; {n,d,m,y,Return}
+    nvimnote {new, daily, monthly, yearly, }
