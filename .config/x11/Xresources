@@ -23,7 +23,7 @@ Xcursor.theme: Bibata-Modern-Classic
 
 dwm.normfgcolor:                FOREGROUND
 dwm.normbgcolor:                BACKGROUND
-dwm.normbordercolor:            BACKGROUND
+dwm.normbordercolor:            #222222
 dwm.normfloatcolor:             COLOR08
 dwm.selfgcolor:                 COLOR00
 dwm.selbgcolor:                 COLOR06
