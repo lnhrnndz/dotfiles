@@ -18,7 +18,7 @@ alias dotfilestree="tree -a . -I .git"
 alias wikis="cd $HOME/wikis"
 alias net="slurm -i $(ip link show | awk '/state UP/ {print $2}' | sed 's/.$//')"
 
-alias vim="nvim"
+#alias vim="nvim"
 alias doom="$HOME/.emacs.d/bin/doom"
 
 # config shortcuts
