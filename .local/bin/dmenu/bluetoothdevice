@@ -4,8 +4,7 @@ DEVICES=$(bluetoothctl devices)
 
 NAMES=$(echo "$DEVICES" | awk -F"..:..:..:..:..:.. " '{ print $2 }')
 
-n=$(echo "$NAMES" | wc -l)
-CHOICE=$(echo "$NAMES" | rofi -dmenu -l "$n" -p "select device")
+CHOICE=$(echo "$NAMES" | dmenu -p "select device")
 if [ -z "$CHOICE" ]; then
     echo "aborting"
     exit 1

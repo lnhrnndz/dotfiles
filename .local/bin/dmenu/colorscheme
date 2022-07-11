@@ -2,9 +2,7 @@
 
 options=$(ls "$HOME"/.config/x11/Xresources.d/)
 
-n="$(echo "$options" | tr -d ' ' | wc -w)"
-
-choice=$(echo "$options" | rofi -dmenu -l "$n" -p "set colorscheme ")
+choice=$(echo "$options" | dmenu -p "set colorscheme ")
 
 [ -z "$choice" ] && echo "chcol: aborting" && exit 1
 

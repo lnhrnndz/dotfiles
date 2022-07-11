@@ -10,9 +10,7 @@ Backspace
 nocaps
 None"
 
-n="$(echo "$options" | wc -w)"
-
-choice=$(echo "$options" | rofi -dmenu -l "$n" -p "set capslock remap ")
+choice=$(echo "$options" | dmenu -p "set capslock remap ")
 [ -z "$choice" ] && exit 1
 setxkbmap -option
 

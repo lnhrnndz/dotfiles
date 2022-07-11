@@ -1,0 +1,10 @@
+#!/bin/sh
+
+scripts=$(find "$HOME"/.local/bin/dmenu/* | grep -v -F "dmenuscripts")
+options=$(echo "$scripts" | sed "s|${HOME}/.local/bin/dmenu/||")
+
+script=$(echo "$options" | dmenu -p "select script ")
+
+[ -z "$script" ] && exit 1
+
+exec "$script"

@@ -26,9 +26,7 @@ $normalname"
     fi
 done
 
-n=$(echo "$sinks" | wc -l)
-
-chosen=$(echo "$sinks" | awk '{print $1}' | rofi -dmenu -i -l "$n" -p "select sink")
+chosen=$(echo "$sinks" | awk '{print $1}' | dmenu -i -p "select sink")
 
 [ -z "$chosen" ] && exit 1
 
