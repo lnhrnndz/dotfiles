@@ -20,6 +20,9 @@ alias net="slurm -i $(ip link show | awk '/state UP/ {print $2}' | sed 's/.$//')
 
 #alias vim="nvim"
 alias doom="$HOME/.emacs.d/bin/doom"
+alias emacs="emacs -fh"
+alias emacsc="emacsclient -c -a 'emacs'"
+alias emacsd="emacs --daemon"
 
 # config shortcuts
 alias zshrc="$EDITOR $HOME/.zshrc"
