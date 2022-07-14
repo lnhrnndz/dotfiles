@@ -5,13 +5,16 @@ xrdb -merge $HOME/.Xresources
 
 xbanish &
 setxkbmap -option caps:ctrl_modifier
-xcape -e 'Caps_Lock=Escape'
+xcape -e 'Alt_L=Escape'
+setxkbmap -option altwin:swap_alt_win
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 xset r rate 200 36
 
 picom --experimental-backends -b
 feh --bg-fill $HOME/Pictures/wallpapers/archbox.png
 dunst &
+
+#xmodmap $HOME/.config/x11/xmodmap.d/xmodmaprc
 
 dwm-status &
 exec dbus-run-session dwm
