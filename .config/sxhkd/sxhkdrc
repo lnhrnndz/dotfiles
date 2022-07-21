@@ -1,5 +1,5 @@
 super + Escape
-    pkill -USR1 -x sxhkd; keyboard reload
+    pkill -USR1 -x sxhkd
 
 super + shift + q
     pkill -9 dwm
@@ -34,6 +34,9 @@ super + grave
 super + x
     dunstctl close-all
 
+super + shift + l
+    slock
+
 # ======
 # SYSTEM
 # ======
@@ -48,12 +51,6 @@ XF86AudioMute
 XF86Audio{Raise,Lower}Volume
     volume {up,down} 5
 shift + XF86Audio{Raise,Lower}Volume
-    volume {up,down} 2
-F1
-    volume togglemute
-F{3,2}
-    volume {up,down} 5
-shift + F{3,2}
     volume {up,down} 2
 
 # brightness
