@@ -65,4 +65,4 @@ super + space
 # ====
 
 super + n; {n,d,m,y,Return}
-    zet {new, daily, monthly, yearly, }
+    zet {new, daily, fullmonth, yearly, }
