@@ -2,9 +2,9 @@
 
 OS: [Arch](https://archlinux.org/) <br>
 WM: [dwm](https://github.com/lnhrnndz/dwm) <br>
-Terminal: [st](https://github.com/lnhrnndz/st-flexipatch) <br>
+Terminal: [st](https://github.com/lnhrnndz/st) <br>
 Shell: zsh <br>
-Editor: [neovim](https://github.com/neovim/neovim) <br>
+Editor: [neovim](https://github.com/lnhrnndz/NeoVim) <br>
 Compositor: [picom-git](https://github.com/yshui/picom) <br>
 Launcher: [dmenu](https://github.com/lnhrnndz/dmenu) <br>
 Font: [JetBrains Mono](https://www.jetbrains.com/lp/mono/) <br>
@@ -44,7 +44,7 @@ stow -D -v . -t ~
 
 Or remove symlinks individually
 
-### Command replacements
+## Command replacements
 
 - [`exa`](https://github.com/ogham/exa)
 - [`bat`](https://github.com/sharkdp/bat)
