@@ -64,5 +64,5 @@ super + space
 # MISC
 # ====
 
-super + n; {n,d,m,y,Return}
-    zet {new, daily, fullmonth, yearly, }
+super + n; {n,d,m,y,o,Return}
+    zet {new, daily, monthly, yearly, overview, startup}
