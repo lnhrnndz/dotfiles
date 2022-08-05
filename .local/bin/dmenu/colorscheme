@@ -1,10 +1,12 @@
 #!/bin/sh
 
-options=$(ls "$HOME"/.config/x11/Xresources.d/)
+folder="$HOME/.config/x11/Xresources.d/"
+options=$(ls "$folder")
 
-choice=$(echo "$options" | dmenu -p "set colorscheme ")
+choice=$(echo "$options" | dmenu -i -p "set colorscheme ")
 
-[ -z "$choice" ] && echo "chcol: aborting" && exit 1
+[ -z "$choice" ] && echo "colorscheme: aborting" && exit 1
+[ -d "$folder$choice" ] && echo "colorscheme: aborting" && exit 1
 
 echo "changing colorscheme to $choice"
 echo "some apps may need to restart"
@@ -14,3 +16,6 @@ eval "sed -i 's/#include.*$/#include\ \"\/home\/leon\/.config\/x11\/Xresources.d
 xrdb "$HOME/.Xresources"
 
 pkill -USR1 st
+# TODO: automatically reload dwm colors as well
+
+feh --bg-fill "$HOME/wallpapers/colorschemes/$choice"
