@@ -46,17 +46,18 @@ next_lauout () {
 
 dmenu_sel () {
     CHOICE=$(echo "$LAYOUTS" | dmenu -p "select layout")
+    [ -z "$CHOICE" ] && return
     setxkbmap "$CHOICE"
     notify "$CHOICE"
 }
 
 while getopts "hrs:nd" opt; do
     case $opt in
-        h) help && exit ;;
+        h) help ;;
         r) reload_kb ;;
         s) set_layout "$OPTARG" ;;
         n) next_lauout ;;
         d) dmenu_sel ;;
-        *) dmenu_sel ;;
+        *) help ;;
     esac
 done

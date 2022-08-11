@@ -1,6 +1,9 @@
 super + Escape
     pkill -USR1 -x sxhkd
 
+super + Delete
+    keyboard -r
+
 super + shift + q
     pkill -9 dwm
 
@@ -58,7 +61,7 @@ XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
 super + space
-    keyboard next
+    keyboard -n
 
 # ====
 # MISC
