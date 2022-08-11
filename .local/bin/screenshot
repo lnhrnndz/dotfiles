@@ -1,22 +1,55 @@
 #!/bin/sh
 
-notify () {
-    notify-send "Screenshot taken!"
+help () {
+  echo "Usage: shot [OPTION...]
+
+Options:
+ -n NAME      use NAME as filename (must proceed all other options!)
+ -a           screenshot all screens
+ -s           select area to screenshot with mouse
+ -f           screenshot focused window"
 }
 
+notify () {
+  notify-send "Screenshot taken!"
+  echo "screenshot saved as $FILENAME"
+}
+
+TIMESTAMP=$(date +%Y-%m-%d_%H%M%S)
 FOLDER="$HOME/Pictures/Screenshots/"
-FILENAME="${FOLDER}%Y-%m-%d_%H%M%S.png"
+FILENAME="$FOLDER$TIMESTAMP.png"
 
+#if echo "$1" | grep -vq "-"; then
+#  FILENAME="$FOLDER$1"
+#fi
+#echo "$FILENAME"
 
-if [ -z "$1" ]; then
-    scrot "$FILENAME"
-else
-    [ -n "$2" ] && FILENAME="${FOLDER}${2}.png"
-    case "$1" in
-        select) scrot --select --line mode=edge "$FILENAME" || exit 1 ;;
-        focused) scrot --focused "$FILENAME" || exit 1 ;;
-        *) scrot "${FOLDER}${1}.png" || exit 2 ;;
-    esac
-fi
-
-notify
+while getopts ":n:hasf" opt; do
+  case $opt in
+    h) help ;;
+    n)
+      FILENAME="$FOLDER$OPTARG.png"
+      ;;
+    a) 
+      scrot "$FILENAME" || exit 1
+      notify
+      ;;
+    s)
+      echo "drag with left mouse button to select area"
+      scrot --select --line mode=edge "$FILENAME" || exit 1
+      notify
+      ;;
+    f)
+      scrot --focused "$FILENAME" || exit 1
+      notify
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done

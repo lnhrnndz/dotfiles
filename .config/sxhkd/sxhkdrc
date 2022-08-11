@@ -22,11 +22,11 @@ alt + Tab
 
 # scrot
 super + shift + s
-    screenshot select
+    screenshot -s
 super + s
-    screenshot focused
+    screenshot -f
 alt + shift + s
-    screenshot
+    screenshot -a
 
 # dunst
 super + grave
