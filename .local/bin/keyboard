@@ -1,38 +1,63 @@
 #!/bin/sh
 
-if [ "$1" = "reload" ]; then
-    setxkbmap -option caps:ctrl_modifier
-    xset r rate 200 36
-    exit 0
-fi
-
-OPTIONS="\
+LAYOUTS="\
 us
 ch"
 
-n=$(echo "$OPTIONS" | wc -l)
+help () {
+    echo "Usage: keyboard [OPTIONS]
 
-if [ "$1" = "next" ]; then
-    CURRENT=$(setxkbmap -query | awk '/layout/{print $2}')
-    CURRENTNR=$(echo "$OPTIONS" | awk "/$CURRENT/ { print NR }")
-    NEXTNR=$(( (CURRENTNR) % n + 1 ))
-    CHOICE=$(echo "$OPTIONS" | sed -n "${NEXTNR}p")
-    echo "$CHOICE"
-elif [ -z "$1" ]; then
-    #n="$(echo "$OPTIONS" | tr -d ' ' | wc -w)"
-    if ! which rofi 2> /dev/null > /dev/null; then
-        echo "rofi is not installed"
-        echo "aborting"
-        exit
-    fi
-    CHOICE=$(echo "$OPTIONS" | rofi -dmenu -l "$n" -p "Select layout")
-    [ -z "$CHOICE" ] && exit 1
-else
-    echo "$OPTIONS" | grep -q "$1" || exit 2
+Options:
+ -h             display this menu
+ -r             reload default options
+ -s LAYOUT      set keyboard layout to LAYOUT
+ -n             set keyboard to next layout available
+ -d             select a layout with dmenu"
+}
+
+notify () {
+    dunstify -a keyboard -u low -r 666 "keyboard layout set to $1"
+}
+
+reload_kb () {
+    setxkbmap -option caps:ctrl_modifier
+    xset r rate 200 36
+}
+
+set_layout () {
     CHOICE="$1"
-fi
+    if ! echo "$LAYOUTS" | grep -q "$CHOICE"; then
+        echo "invalid option"
+        return
+    fi
+    setxkbmap "$CHOICE"
+    notify "$CHOICE"
+}
 
+next_lauout () {
+    n=$(echo "$LAYOUTS" | wc -l)
+    CURRENT=$(setxkbmap -query | awk '/layout/{print $2}')
+    CURRENTNR=$(echo "$LAYOUTS" | awk "/$CURRENT/ { print NR }")
+    NEXTNR=$(( (CURRENTNR) % n + 1 ))
+    CHOICE=$(echo "$LAYOUTS" | sed -n "${NEXTNR}p")
+    setxkbmap "$CHOICE"
+    notify "$CHOICE"
+}
 
-setxkbmap "$CHOICE"
+dmenu_sel () {
+    CHOICE=$(echo "$LAYOUTS" | dmenu -p "select layout")
+    [ -z "$CHOICE" ] && return
+    setxkbmap "$CHOICE"
+    notify "$CHOICE"
+}
 
-dunstify -a keyboard -u low -r 666 "keyboard layout set to $CHOICE"
+while getopts "hrs:nd" opt; do
+    case $opt in
+        h) help ;;
+        r) reload_kb ;;
+        s) set_layout "$OPTARG" ;;
+        n) next_lauout ;;
+        d) dmenu_sel ;;
+        *) help ;;
+    esac
+done
