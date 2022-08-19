@@ -5,7 +5,7 @@ super + Delete
     keyboard -r
 
 super + shift + q
-    pkill -9 dwm
+    prompt "Quit dwm?" "pkill -9 dwm"
 
 # ============
 # APPLICATIONS
