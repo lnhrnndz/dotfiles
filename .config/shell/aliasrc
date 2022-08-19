@@ -6,6 +6,11 @@ alias ll="ls -l"
 alias la="ls -la"
 alias cat="bat"
 
+# git
+alias glog="git log --branches --oneline --graph --decorate"
+alias diff="bat \$(git status --porcelain | awk '{ print \$2 }')"
+alias udiff="bat \$(git status --porcelain | awk '/^\?\?/ { print \$2 }')"
+
 alias lg="lazygit"
 
 alias suspend="loginctl suspend"
