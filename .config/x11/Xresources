@@ -1,6 +1,6 @@
 #include "/home/leon/.config/x11/Xresources.d/gruvbox"
 
-Xcursor.theme: Bibata-Modern-Classic
+Xcursor.theme: Bibata-Original-Classic
 
 *.foreground: FOREGROUND
 *.background: BACKGROUND
