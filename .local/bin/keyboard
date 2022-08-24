@@ -51,13 +51,14 @@ dmenu_sel () {
     notify "$CHOICE"
 }
 
-while getopts "hrs:nd" opt; do
+while getopts ":hrs:nd" opt; do
     case $opt in
         h) help ;;
         r) reload_kb ;;
         s) set_layout "$OPTARG" ;;
         n) next_lauout ;;
         d) dmenu_sel ;;
-        *) help ;;
+        \?) echo "Invalid option -$OPTARG"; exit ;;
+        :) echo "Option -$OPTARG needs an argument"; exit ;;
     esac
 done
