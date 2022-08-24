@@ -1,14 +1,14 @@
 #!/bin/sh
 
 case "$1" in
-    on) STATE="1" ;;
-    off) STATE="0" ;;
-    *) exit 2 ;;
+  on) STATE="1" ;;
+  off) STATE="0" ;;
+  *) exit 2 ;;
 esac
 
 ID=$(xinput list | awk '/TouchPad/ { print $6 }' | sed 's/id=//')
 [ -z "$ID" ] && \
-    ID=$(xinput list | awk '/Touchpad/ { print $5 }' | sed 's/id=//')
+  ID=$(xinput list | awk '/Touchpad/ { print $5 }' | sed 's/id=//')
 
 xinput set-prop "$ID" "Device Enabled" "$STATE" || exit 1
 

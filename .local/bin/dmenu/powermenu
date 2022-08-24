@@ -16,25 +16,25 @@ cancel"
 choice=$(echo "$options" | dmenu -p "what do?")
 
 case "$choice" in
-    lock)
-        lock ;;
-    suspend)
-        loginctl suspend ;;
-    lock\ then\ suspend)
-        lock
-        sleep 2
-        loginctl suspend
-        ;;
-    hibernate)
-        loginctl hibernate ;;
-    hybrid\ sleep)
-        loginctl hybrid-sleep ;;
-    suspend\ then\ hibernate)
-        loginctl suspend-then-hybernate ;;
-    shut\ down)
-        loginctl poweroff ;;
-    reboot)
-        loginctl reboot ;;
-    cancel)
-        exit 1 ;;
+  lock)
+    lock ;;
+  suspend)
+    loginctl suspend ;;
+  lock\ then\ suspend)
+    lock
+    sleep 2
+    loginctl suspend
+    ;;
+  hibernate)
+    loginctl hibernate ;;
+  hybrid\ sleep)
+    loginctl hybrid-sleep ;;
+  suspend\ then\ hibernate)
+    loginctl suspend-then-hybernate ;;
+  shut\ down)
+    loginctl poweroff ;;
+  reboot)
+    loginctl reboot ;;
+  cancel)
+    exit 1 ;;
 esac

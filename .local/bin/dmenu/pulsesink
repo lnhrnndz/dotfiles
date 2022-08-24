@@ -15,15 +15,15 @@ $other"
 
 sinks=
 for sink in $available; do
-    normalname=$(echo "$sinkmap" | awk "/$sink/{print \$1}")
-    [ -z "$normalname" ] && normalname="$sink"
+  normalname=$(echo "$sinkmap" | awk "/$sink/{print \$1}")
+  [ -z "$normalname" ] && normalname="$sink"
 
-    if [ -z "$sinks" ]; then
-        sinks="$normalname"
-    else
-        sinks="$sinks
+  if [ -z "$sinks" ]; then
+    sinks="$normalname"
+  else
+    sinks="$sinks
 $normalname"
-    fi
+  fi
 done
 
 chosen=$(echo "$sinks" | awk '{print $1}' | dmenu -i -p "select sink")
@@ -34,8 +34,8 @@ sink=$(echo "$sinkmap" | awk "/$chosen/{print \$2}")
 
 device=$(echo "$sink" | awk -F"." '{print $1}')
 if [ "$device" = "bluez_sink" ]; then
-    macaddr=$(echo "$sink" | awk -F"." '{print $2}' | sed 's/_/:/g')
-    bluetoothctl connect "$macaddr"
+  macaddr=$(echo "$sink" | awk -F"." '{print $2}' | sed 's/_/:/g')
+  bluetoothctl connect "$macaddr"
 fi
 
 pactl set-default-sink "$sink"
