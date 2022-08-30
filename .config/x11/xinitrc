@@ -9,7 +9,7 @@ xcape -e 'Caps_Lock=Escape'
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 xset r rate 200 36
 
-picom --experimental-backends -b
+#picom --experimental-backends -b
 feh --bg-fill $HOME/Pictures/wallpapers/archbox.png
 dunst &
 
