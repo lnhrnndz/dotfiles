@@ -9,7 +9,8 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%fon %F{039}%b '
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
-PROMPT='%B%F{099}%n %{$reset_color%}in %F{106}%~ ${vcs_info_msg_0_}%F{166}λ %f'
+PROMPT='%B%F{099}%n %{$reset_color%}in %F{106}%~ ${vcs_info_msg_0_}%F{166}
+λ %f'
 
 # don't use colors when using greenscreen theme
 THEME=$(xrdb -query | awk '/name/ { print $2 }')
