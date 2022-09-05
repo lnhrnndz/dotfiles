@@ -8,7 +8,7 @@ alias cat="bat"
 
 # git
 alias glog="git log --branches --oneline --graph --decorate"
-alias diff="bat \$(git status --porcelain | awk '{ print \$2 }')"
+alias gdiff="bat \$(git status --porcelain | awk '{ print \$2 }')"
 alias udiff="bat \$(git status --porcelain | awk '/^\?\?/ { print \$2 }')"
 
 alias lg="lazygit"
@@ -21,7 +21,6 @@ alias tree="tree --dirsfirst -F"
 alias dotfilestree="tree -a . -I .git"
 
 alias wikis="cd $HOME/wikis"
-alias net="slurm -i $(ip link show | awk '/state UP/ {print $2}' | sed 's/.$//')"
 
 #alias vim="nvim"
 alias doom="$HOME/.emacs.d/bin/doom"

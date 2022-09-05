@@ -15,18 +15,18 @@ choice=$(echo "$options" | dmenu -p "set capslock remap ")
 setxkbmap -option
 
 case "$choice" in
-    "Capslock")
-        remap="capslock" ;;
-    "Control")
-        remap="ctrl_modifier" ;;
-    "Super")
-        remap="super" ;;
-    "Escape")
-        remap="escape" ;;
-    "Swap Escape")
-        remap="swapescape" ;;
-    "None")
-        remap="none" ;;
+  "Capslock")
+    remap="capslock" ;;
+  "Control")
+    remap="ctrl_modifier" ;;
+  "Super")
+    remap="super" ;;
+  "Escape")
+    remap="escape" ;;
+  "Swap Escape")
+    remap="swapescape" ;;
+  "None")
+    remap="none" ;;
 esac
 
 setxkbmap -option caps:$remap

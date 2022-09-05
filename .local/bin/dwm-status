@@ -4,63 +4,63 @@ delim=" "
 
 status() {
 
-    echo " "
+  echo " "
 
-    # INTERNET
-    INTERFACE=$(ip link | awk '/wl/{print $2}' | sed 's/://')
-    NETWORK="$(iw dev "$INTERFACE" link | awk '/SSID/{print $2}')"
+  # INTERNET
+  INTERFACE=$(ip link | awk '/wl/{print $2}' | sed 's/://')
+  NETWORK="$(iw dev "$INTERFACE" link | awk '/SSID/{print $2}')"
 
-    [ -z "$NETWORK" ] && NETWORK="N/A"
+  [ -z "$NETWORK" ] && NETWORK="N/A"
 
-    echo "[NET $NETWORK]"
+  echo "[NET $NETWORK]"
 
-    ip link | grep -q tun0 && echo "[VPN]"
+  ip link | grep -q tun0 && echo "[VPN]"
+
+  echo "$delim"
+
+  # VOLUME
+  SINK="$(pactl get-default-sink)"
+  VOLUME="$(pactl get-sink-volume "$SINK" | awk '{ print $5 }')" 
+  MUTED="$(pactl get-sink-mute "$SINK" | awk '{ print $2 }')"
+
+  [ "$MUTED" = "yes" ] && VOLUME="---"
+
+  echo "[VOL $VOLUME]"
+
+  echo "$delim"
+
+  # BATTERY
+  for BATTERY in /sys/class/power_supply/BAT* ; do
+
+    if [ "$(find /sys/class/power_supply/ -name BAT\* | wc -l)" -lt 2 ]; then
+      BAT="BAT"
+    else
+      BAT=$(basename "$BATTERY")
+    fi
+
+    CAPACITY=$(cat "${BATTERY}/capacity")
+    STATUS=$(cat "${BATTERY}/status")
+
+    if [ "$CAPACITY" -lt 10 ] && [ ! "$STATUS" = "charging" ]; then
+      if [ "$(( $(date +%S) % 2))" -eq 0 ]; then
+        echo "        "
+      else
+        echo "[$BAT ${CAPACITY}%]"
+      fi
+    else
+      echo "[$BAT ${CAPACITY}%]"
+    fi
 
     echo "$delim"
+  done
 
-    # VOLUME
-    SINK="$(pactl get-default-sink)"
-    VOLUME="$(pactl get-sink-volume "$SINK" | awk '{ print $5 }')" 
-    MUTED="$(pactl get-sink-mute "$SINK" | awk '{ print $2 }')"
+  # TIME & DATE
+  date '+%a %F %H:%M:%S'
 
-    [ "$MUTED" = "yes" ] && VOLUME="---"
-
-    echo "[VOL $VOLUME]"
-
-    echo "$delim"
-
-    # BATTERY
-    for BATTERY in /sys/class/power_supply/BAT* ; do
-
-        if [ "$(find /sys/class/power_supply/ -name BAT\* | wc -l)" -lt 2 ]; then
-            BAT="BAT"
-        else
-            BAT=$(basename "$BATTERY")
-        fi
-
-        CAPACITY=$(cat "${BATTERY}/capacity")
-        STATUS=$(cat "${BATTERY}/status")
-
-        if [ "$CAPACITY" -lt 10 ] && [ ! "$STATUS" = "charging" ]; then
-            if [ "$(( $(date +%S) % 2))" -eq 0 ]; then
-                echo "        "
-            else
-                echo "[$BAT ${CAPACITY}%]"
-            fi
-        else
-            echo "[$BAT ${CAPACITY}%]"
-        fi
-
-        echo "$delim"
-    done
-
-    # TIME & DATE
-    date '+%a %F %H:%M:%S'
-
-    echo " "
+  echo " "
 }
 
 while true; do
-    xsetroot -name "$(status | tr -d '\n')"
-    sleep 1s
+  xsetroot -name "$(status | tr -d '\n')"
+  sleep 1s
 done

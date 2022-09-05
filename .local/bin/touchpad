@@ -1,15 +1,16 @@
 #!/bin/sh
 
 case "$1" in
-    on) STATE="1" ;;
-    off) STATE="0" ;;
-    *) exit 2 ;;
+  on) STATE="1" ; ACTION="enable" ;;
+  off) STATE="0" ; ACTION="disable" ;;
+  *) exit 1 ;;
 esac
 
-ID=$(xinput list | awk '/TouchPad/ { print $6 }' | sed 's/id=//')
-[ -z "$ID" ] && \
-    ID=$(xinput list | awk '/Touchpad/ { print $5 }' | sed 's/id=//')
+xinput set-prop "$ID" "Device Enabled" "$STATE" || exit 3
 
-xinput set-prop "$ID" "Device Enabled" "$STATE" || exit 1
+ID=$(xinput | grep -i touchpad | awk -F'id=' '{ print $2 }' | awk '{ print $1 }')
+[ -z "$ID" ] && exit 2
+
+xinput "$ACTION" "$ID"
 
 notify-send "Touchpad $1"

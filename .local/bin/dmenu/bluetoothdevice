@@ -6,11 +6,11 @@ NAMES=$(echo "$DEVICES" | awk -F"..:..:..:..:..:.. " '{ print $2 }')
 
 CHOICE=$(echo "$NAMES" | dmenu -p "select device")
 if [ -z "$CHOICE" ]; then
-    echo "aborting"
-    exit 1
+  echo "aborting"
+  exit 1
 elif ! echo "$DEVICES" | grep -q "$CHOICE"; then
-    echo "invalid device"
-    exit 2
+  echo "invalid device"
+  exit 2
 fi
 
 MAC_ADDRESS=$(echo "$DEVICES" | grep "$CHOICE" | awk '{ print $2 }')

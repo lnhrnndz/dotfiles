@@ -5,9 +5,9 @@ us
 ch"
 
 help () {
-    echo "Usage: keyboard [OPTIONS]
+    echo "USAGE: keyboard [OPTIONS]
 
-Options:
+OPTIONS:
  -h             display this menu
  -r             reload default options
  -s LAYOUT      set keyboard layout to LAYOUT
@@ -16,48 +16,49 @@ Options:
 }
 
 notify () {
-    dunstify -a keyboard -u low -r 666 "keyboard layout set to $1"
+  dunstify -a keyboard -u low -r 666 "keyboard layout set to $1"
 }
 
 reload_kb () {
-    setxkbmap -option caps:ctrl_modifier
-    xset r rate 200 36
+  setxkbmap -option caps:ctrl_modifier
+  xset r rate 200 36
 }
 
 set_layout () {
-    CHOICE="$1"
-    if ! echo "$LAYOUTS" | grep -q "$CHOICE"; then
-        echo "invalid option"
-        return
-    fi
-    setxkbmap "$CHOICE"
-    notify "$CHOICE"
+  CHOICE="$1"
+  if ! echo "$LAYOUTS" | grep -q "$CHOICE"; then
+    echo "invalid option"
+    return
+  fi
+  setxkbmap "$CHOICE"
+  notify "$CHOICE"
 }
 
 next_lauout () {
-    n=$(echo "$LAYOUTS" | wc -l)
-    CURRENT=$(setxkbmap -query | awk '/layout/{print $2}')
-    CURRENTNR=$(echo "$LAYOUTS" | awk "/$CURRENT/ { print NR }")
-    NEXTNR=$(( (CURRENTNR) % n + 1 ))
-    CHOICE=$(echo "$LAYOUTS" | sed -n "${NEXTNR}p")
-    setxkbmap "$CHOICE"
-    notify "$CHOICE"
+  n=$(echo "$LAYOUTS" | wc -l)
+  CURRENT=$(setxkbmap -query | awk '/layout/{print $2}')
+  CURRENTNR=$(echo "$LAYOUTS" | awk "/$CURRENT/ { print NR }")
+  NEXTNR=$(( (CURRENTNR) % n + 1 ))
+  CHOICE=$(echo "$LAYOUTS" | sed -n "${NEXTNR}p")
+  setxkbmap "$CHOICE"
+  notify "$CHOICE"
 }
 
 dmenu_sel () {
-    CHOICE=$(echo "$LAYOUTS" | dmenu -p "select layout")
-    [ -z "$CHOICE" ] && return
-    setxkbmap "$CHOICE"
-    notify "$CHOICE"
+  CHOICE=$(echo "$LAYOUTS" | dmenu -p "select layout")
+  [ -z "$CHOICE" ] && return
+  setxkbmap "$CHOICE"
+  notify "$CHOICE"
 }
 
-while getopts "hrs:nd" opt; do
-    case $opt in
-        h) help ;;
-        r) reload_kb ;;
-        s) set_layout "$OPTARG" ;;
-        n) next_lauout ;;
-        d) dmenu_sel ;;
-        *) help ;;
-    esac
+while getopts ":hrs:nd" opt; do
+  case $opt in
+    h) help ;;
+    r) reload_kb ;;
+    s) set_layout "$OPTARG" ;;
+    n) next_lauout ;;
+    d) dmenu_sel ;;
+    \?) echo "Invalid option -$OPTARG"; exit ;;
+    :) echo "Option -$OPTARG needs an argument"; exit ;;
+  esac
 done
