@@ -3,14 +3,18 @@
 xrandr --output HDMI-2 --primary --right-of eDP-1
 xrdb -merge $HOME/.Xresources
 
-xbanish &
-sxhkd &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
+sleep 1
+
 xmodmap $HOME/.config/x11/xmodmaprc
 xcape -e 'Super_L=Escape'
 xset r rate 200 36
 
-picom --experimental-backends -b
+xbanish &
+
+#picom --experimental-backends -b
 feh --bg-fill $HOME/Pictures/wallpapers/archbox.png
+
 dunst &
 
 dwm-status &
