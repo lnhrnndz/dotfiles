@@ -25,11 +25,15 @@ alt + Tab
 
 # scrot
 super + shift + s
-    screenshot -s
-super + s
-    screenshot -f
-alt + shift + s
-    screenshot -a
+    shot --select
+super + s; a
+    shot --all
+super + s; s
+    shot --select
+super + s; f
+    shot --focused
+super + s; d
+    shot --dmenu
 
 # dunst
 super + grave
