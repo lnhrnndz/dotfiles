@@ -1,6 +1,9 @@
 #!/bin/fish
 if status is-interactive
+  #fish_default_key_bindings
   fish_vi_key_bindings
+  bind -M insert \cy accept-autosuggestion
+  bind -M insert \cf forward-word
 end
 
 function fish_greeting
