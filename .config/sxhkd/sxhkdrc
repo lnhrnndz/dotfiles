@@ -1,9 +1,6 @@
 super + Escape
     pkill -USR1 -x sxhkd
 
-super + Delete
-    keyboard -r
-
 super + shift + q
     prompt "Quit dwm?" "pkill -9 dwm"
 
@@ -11,9 +8,11 @@ super + shift + q
 # APPLICATIONS
 # ============
 
+# terminal
 super + shift + Return
     st
 
+# launcher
 super + p
     dmenu_run
 super + shift + p
@@ -23,7 +22,7 @@ super + control + p
 alt + Tab
     rofi -show window -sort
 
-# scrot
+# screenshot
 super + shift + s
     shot --select
 super + s; a
@@ -35,7 +34,7 @@ super + s; f
 super + s; d
     shot --dmenu
 
-# dunst
+# notifications
 super + grave
     dunstctl history-pop
 super + x
@@ -64,8 +63,11 @@ shift + XF86Audio{Raise,Lower}Volume
 XF86MonBrightness{Up,Down}
     light -{A,U} 10
 
+# keyboard
 super + space
     keyboard -n
+super + Delete
+    keyboard -r
 
 # ====
 # MISC
