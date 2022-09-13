@@ -42,7 +42,7 @@ status() {
     STATUS=$(cat "${BATTERY}/status")
 
     if [ "$CAPACITY" -lt 10 ] && [ ! "$STATUS" = "charging" ]; then
-      if [ "$(( $(date +%S) % 2))" -eq 0 ]; then
+      if [ "$(( $(date +%S) % 10))" -eq 0 ]; then
         echo "        "
       else
         echo "[$BAT ${CAPACITY}%]"
