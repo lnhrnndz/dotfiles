@@ -1,2 +1,4 @@
 .config/tmux/plugins
 .config/qBittorrent
+
+.config/fish/fish_variables
