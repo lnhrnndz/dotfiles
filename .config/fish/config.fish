@@ -8,12 +8,18 @@ function fish_greeting
 end
 
 function fish_mode_prompt
+  set_color brblue
+  fish_vcs_prompt > /dev/null
+  and printf "%s " (fish_vcs_prompt | sed 's/^ //')
+  set_color normal
   switch $fish_bind_mode
     case default
       set_color brred
     case insert
       set_color brgreen
     case replace
+      set_color bryellow
+    case replace_one
       set_color bryellow
     case visual
       set_color brmagenta
