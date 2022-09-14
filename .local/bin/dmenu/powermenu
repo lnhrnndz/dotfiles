@@ -1,6 +1,7 @@
 #!/bin/sh
 
-alias lock="i3lock -e -c 282A36"
+#alias lock="i3lock -e -c 282A36"
+alias lock="slock"
 
 options="\
 lock
@@ -19,22 +20,21 @@ case "$choice" in
   lock)
     lock ;;
   suspend)
-    loginctl suspend ;;
+    systemctl suspend ;;
   lock\ then\ suspend)
+    systemctl suspend
     lock
-    sleep 2
-    loginctl suspend
     ;;
   hibernate)
-    loginctl hibernate ;;
+    systemctl hibernate ;;
   hybrid\ sleep)
-    loginctl hybrid-sleep ;;
+    systemctl hybrid-sleep ;;
   suspend\ then\ hibernate)
-    loginctl suspend-then-hybernate ;;
+    systemctl suspend-then-hybernate ;;
   shut\ down)
-    loginctl poweroff ;;
+    systemctl poweroff ;;
   reboot)
-    loginctl reboot ;;
+    systemctl reboot ;;
   cancel)
     exit 1 ;;
 esac

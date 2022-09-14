@@ -3,7 +3,7 @@
 OS: [Arch](https://archlinux.org/) <br>
 WM: [dwm](https://github.com/lnhrnndz/dwm) <br>
 Terminal: [st](https://github.com/lnhrnndz/st) <br>
-Shell: zsh <br>
+Shell: [fish](https://fishshell.com) <br>
 Editor: [neovim](https://github.com/lnhrnndz/NeoVim) <br>
 Compositor: [picom-git](https://github.com/yshui/picom) <br>
 Launcher: [dmenu](https://github.com/lnhrnndz/dmenu) <br>

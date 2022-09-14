@@ -1,0 +1,69 @@
+#!/bin/fish
+
+set TIMESTAMP (date +%Y-%m-%d_%H%M%S)
+set FOLDER "$HOME/Pictures/Screenshots/"
+set FILENAME "$FOLDER$TIMESTAMP.png"
+
+function notify
+  if test "$argv[1]" = "fail"
+    notify-send -u critical "Failed to take screenshot"
+    echo "Failed to take screenshot"
+    test -z $argv[2] && exit 1
+    exit $argc[2]
+  else if test -z $argv[1]
+    notify-send -u low "Screenshot taken!"
+    echo "screenshot saved as $FILENAME"
+  else
+    notify-send -u low "Screenshot taken! ($argv[1])"
+    echo "screenshot saved as $FILENAME"
+  end
+end
+
+function screenshot
+  argparse h/help n/name= a/all s/select f/focused m/monitor d/dmenu -- $argv
+  or notify "fail" 3
+
+  if set -q _flag_help
+    echo "usage: screenshot [-h|--help] [-n|--name NAME] [-a|--all] [-s|--select] [-f|--focused]"
+    echo "                  [-m|--monitor] [-d|--dmenu]"
+    exit
+  end
+  if set -q _flag_name
+    set FILENAME "$FOLDER$_flag_name.png"
+  end
+  if set -q _flag_all
+    scrot "$FILENAME" || notify "fail"
+    notify "all"
+  end
+  if set -q _flag_select
+    echo "drag with left mouse button to select area"
+    scrot --select --line mode=edge "$FILENAME" || notify "fail"
+    notify "select"
+  end
+  if set -q _flag_focused
+    scrot --focused "$FILENAME" || notify "fail"
+    notify "focused"
+  end
+  if set -q _flag_monitor
+    echo "not implemented yet"
+    notify "fail"
+    set -l screens (xrandr -q | awk '/ connected/ { print $1 }')
+    set -l choice (echo $screens | dmenu -p "monitor")
+  end
+  if set -q _flag_dmenu
+    #TODO: set name with dmenu
+    set -l options "all
+select
+focused
+monitor"
+    set -l choice (echo $options | dmenu -p "screenshot")
+    test -z $choice && exit 2
+    screenshot "--$choice"
+  end
+end
+
+if test -z $argv
+  screenshot -h
+else
+  screenshot $argv
+end

@@ -8,7 +8,7 @@ export PATH="$PATH:$HOME/.emacs.d/bin"
 # default programs
 export EDITOR="nvim"
 export TERM="st-256color"
-export SHELL="zsh"
+export SHELL="fish"
 export BROWSER="firefox"
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -17,3 +17,4 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 #. "$HOME/.cargo/env"
+. "$HOME/.cargo/env.fish"
