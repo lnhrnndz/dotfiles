@@ -50,18 +50,22 @@ super + shift + l
 # change #HandlePowerKey=poweroff to HandlePowerKey=ignore in /etc/elogind/login.conf (/etc/systemd/login.conf for systemd, then run sudo systemctl restart systemd-logind.service)
 XF86PowerOff
     powermenu
+XF86Tools
+    systemctl suspend; slock
+super + XF86Tools
+    slock
 
 # volume
-XF86AudioMute
+F8
     volume togglemute
-XF86Audio{Raise,Lower}Volume
-    volume {up,down} 5
-shift + XF86Audio{Raise,Lower}Volume
-    volume {up,down} 2
+F{9,10}
+    volume {down,up} 5
+shift + F{9,10}
+    volume {down,up} 2
 
 # brightness
-XF86MonBrightness{Up,Down}
-    light -{A,U} 10
+F{6,7}
+    light -{U,A} 10
 
 # keyboard
 super + space
@@ -75,3 +79,11 @@ super + Delete
 
 super + n; {n,d,m,y,o,Return}
     zet {new, daily, monthly, yearly, overview, startup}
+
+
+
+
+F4
+    reloaddisplay.sh
+shift + F4
+    reloaddisplay.sh "sleep"
