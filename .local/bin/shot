@@ -19,17 +19,33 @@ function notify
   end
 end
 
+function uniquename
+  set NAME $argv[1]
+  set suffix 1
+
+  test -e "$NAME";
+  and set NAME (echo "$NAME" | sed 's/\.png$/(1).png/')
+  while test -e "$NAME"
+    echo "File already exists $NAME" >&2
+    set oldsuffix $suffix
+    set suffix (math $suffix + 1)
+    set NAME (echo $NAME | sed "s/($oldsuffix)\.png\$/($suffix).png/")
+  end
+  echo $NAME
+end
+
 function screenshot
-  argparse h/help n/name= a/all s/select f/focused m/monitor d/dmenu -- $argv
+  argparse h/help n/name= a/all s/select f/focused m/monitor d/dmenu r/rename -- $argv
   or notify "fail" 3
 
   if set -q _flag_help
     echo "usage: screenshot [-h|--help] [-n|--name NAME] [-a|--all] [-s|--select] [-f|--focused]"
-    echo "                  [-m|--monitor] [-d|--dmenu]"
+    echo "                  [-m|--monitor] [-d|--dmenu] [-r|--rename]"
     exit
   end
   if set -q _flag_name
     set FILENAME "$FOLDER$_flag_name.png"
+    set FILENAME (uniquename "$FILENAME")
   end
   if set -q _flag_all
     scrot "$FILENAME" || notify "fail"
@@ -60,10 +76,16 @@ monitor"
     test -z $choice && exit 2
     screenshot "--$choice"
   end
+  if set -q _flag_rename
+    set -l NEWFILENAME (echo "" | dmenu -p "new filename" )
+    set -l NEWFILENAME (echo (dirname $FILENAME)/$NEWFILENAME.png)
+
+    set -l NEWFILENAME (uniquename "$NEWFILENAME")
+
+    mv $FILENAME $NEWFILENAME
+    notify-send -u low "Screenshot renamed!"
+    echo "Screenshot saved as $NEWFILENAME"
+  end
 end
 
-if test -z $argv
-  screenshot -h
-else
-  screenshot $argv
-end
+screenshot $argv
