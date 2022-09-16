@@ -1,0 +1,22 @@
+! SAGA Xresources palette
+
+name:   saga
+
+#define FOREGROUND  #FAF8F6
+#define BACKGROUND  #212121
+#define COLOR00     #0A0D0F
+#define COLOR08     #CC7764
+#define COLOR01     #FF9E99
+#define COLOR09     #FF9E99
+#define COLOR02     #B4F8C8
+#define COLOR10     #B4F8C8
+#define COLOR03     #FFFAAD
+#define COLOR11     #FFFAAD
+#define COLOR04     #BCA7DD
+#define COLOR12     #BCA7DD
+#define COLOR05     #FFAEBC
+#define COLOR13     #FFAEBC
+#define COLOR06     #A0E7E5
+#define COLOR14     #A0E7E5
+#define COLOR07     #FAF8F6
+#define COLOR15     #FAF8F6
