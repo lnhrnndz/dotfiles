@@ -1,0 +1,33 @@
+! basically gruvbox but swap some colors
+name:   void
+
+! hard contrast #1d2021
+#define BACKGROUND  #131516
+! soft contrast #32302f
+#define FOREGROUND  #D8D4CF
+! Black + DarkGrey
+#define COLOR00   #131516
+#define COLOR08   #928374
+! DarkRed + Red
+#define COLOR01   #cc241d
+#define COLOR09   #fb4934
+! DarkGreen + Green
+#define COLOR02   #98971a
+#define COLOR10   #b8bb26
+! DarkYellow + Yellow
+#define COLOR03   #d79921
+#define COLOR11   #fabd2f
+! DarkBlue + Blue
+#define COLOR04   #689d6a
+#define COLOR12   #8ec07c
+! DarkMagenta + Magenta
+#define COLOR05   #b16286
+#define COLOR13   #d3869b
+! DarkCyan + Cyan
+#define COLOR06   #458588
+#define COLOR14   #83a598
+! LightGrey + White
+#define COLOR07   #D8D4CF
+#define COLOR15   #FFFBEF
+
+#define COLOR16   #32302f

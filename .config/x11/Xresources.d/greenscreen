@@ -1,0 +1,23 @@
+! Base16 Green Screen
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+name:   greenscreen
+
+#define FOREGROUND #00bb00
+#define BACKGROUND #001100
+#define COLOR00 #001100
+#define COLOR01 #003300
+#define COLOR02 #005500
+#define COLOR03 #007700
+#define COLOR04 #009900
+#define COLOR05 #00bb00
+#define COLOR06 #00dd00
+#define COLOR07 #00ff00
+#define COLOR08 #007700
+#define COLOR09 #009900
+#define COLOR10 #007700
+#define COLOR11 #00bb00
+#define COLOR12 #005500
+#define COLOR13 #009900
+#define COLOR14 #00bb00
+#define COLOR15 #005500

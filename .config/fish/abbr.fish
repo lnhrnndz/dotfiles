@@ -15,4 +15,10 @@ abbr -a -- gco 'git checkout'
 abbr -a -- ll 'ls -l'
 abbr -a -- la 'ls -a'
 abbr -a -- lal 'ls -al'
+abbr -a -- lt 'exa --sort newest -l'
 # alias ls in fish/functions
+
+abbr -a -- sxhkdrc 'nvim ~/.config/sxhkd/sxhkdrc'
+
+abbr -a -- treee 'tree --dirsfirst -F'
+abbr -a -- dotfilestree 'tree --dirsfirst -F -a . -I .git'

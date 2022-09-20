@@ -1,0 +1,22 @@
+
+name: brogrammer
+
+#define FOREGROUND   #d6dbe5
+#define BACKGROUND   #131313
+#define COLOR00      #1f1f1f
+#define COLOR08      #d6dbe5
+#define COLOR01      #f81118
+#define COLOR09      #de352e
+#define COLOR02      #2dc55e
+#define COLOR10      #1dd361
+#define COLOR03      #ecba0f
+#define COLOR11      #f3bd09
+#define COLOR04      #2a84d2
+#define COLOR12      #1081d6
+#define COLOR05      #4e5ab7
+#define COLOR13      #5350b9
+#define COLOR06      #1081d6
+#define COLOR14      #0f7ddb
+#define COLOR07      #d6dbe5
+#define COLOR15      #ffffff
+#define COLORBD      #d6dbe5

@@ -32,7 +32,7 @@ super + s; s
 super + s; f
     shot --focused
 super + s; d
-    shot --dmenu
+    shot --dmenu --rename
 
 # notifications
 super + grave

@@ -6,7 +6,28 @@ options=$(ls "$folder")
 choice=$(echo "$options" | dmenu -i -p "set colorscheme ")
 
 [ -z "$choice" ] && echo "colorscheme: aborting" && exit 1
-[ -d "$folder$choice" ] && echo "colorscheme: aborting" && exit 1
+[ ! -f "$folder$choice" ] && echo "colorscheme: $choice is not a file. Aborting" && exit 1
+
+if ! grep FOREGROUND "$folder$choice"; then
+  echo "$choice has no property FOREGROUND. Aborting"
+  exit 50
+fi
+if ! grep BACKGROUND "$folder$choice"; then
+  echo "$choice has no property BACKGROUND. Aborting"
+  exit 50
+fi
+for i in $(seq 0 9); do
+  if ! grep "COLOR0$i" "$folder$choice"; then
+    echo "$choice has no property COLOR0$i. Aborting"
+    exit 50
+  fi
+done
+for i in $(seq 10 15); do
+  if ! grep "COLOR$i" "$folder$choice"; then
+    echo "$choice has no property COLOR$i. Aborting"
+    exit 50
+  fi
+done
 
 echo "changing colorscheme to $choice"
 echo "some apps may need to restart"
@@ -18,4 +39,9 @@ xrdb "$HOME/.Xresources"
 pkill -USR1 st
 # TODO: automatically reload dwm colors as well
 
-feh --bg-fill "$HOME/wallpapers/colorschemes/$choice"
+BG="$HOME/wallpapers/colorschemes/$choice"
+if [ -e "$BG" ]; then
+  feh --bg-fill "$BG"
+else
+  xsetroot -solid '#111111'
+fi
