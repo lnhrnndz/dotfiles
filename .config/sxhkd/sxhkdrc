@@ -51,9 +51,9 @@ super + shift + l
 XF86PowerOff
     powermenu
 XF86Tools
-    systemctl suspend; slock
+    systemctl suspend
 super + XF86Tools
-    slock
+    systemctl suspend; slock
 
 # volume
 F8
