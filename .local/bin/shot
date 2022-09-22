@@ -78,13 +78,15 @@ monitor"
   end
   if set -q _flag_rename
     set -l NEWFILENAME (echo "" | dmenu -p "new filename" )
-    set -l NEWFILENAME (echo (dirname $FILENAME)/$NEWFILENAME.png)
+    if not test "$NEWFILENAME" = ''
+      set -l NEWFILENAME (echo (dirname $FILENAME)/$NEWFILENAME.png)
 
-    set -l NEWFILENAME (uniquename "$NEWFILENAME")
+      set -l NEWFILENAME (uniquename "$NEWFILENAME")
 
-    mv $FILENAME $NEWFILENAME
-    notify-send -u low "Screenshot renamed!"
-    echo "Screenshot saved as $NEWFILENAME"
+      mv $FILENAME $NEWFILENAME
+      notify-send -u low "Screenshot renamed!"
+      echo "Screenshot saved as $NEWFILENAME"
+    end
   end
 end
 
