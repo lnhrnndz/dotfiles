@@ -57,11 +57,11 @@ super + XF86Tools
 
 # volume
 F8
-    volume togglemute
+    volume --mute
 F{9,10}
-    volume {down,up} 5
+    volume {--down,--up} 5
 shift + F{9,10}
-    volume {down,up} 2
+    volume {--down,--up} 2
 
 # brightness
 F{6,7}
