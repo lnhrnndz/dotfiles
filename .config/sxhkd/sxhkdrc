@@ -53,11 +53,11 @@ XF86PowerOff
 
 # volume
 XF86AudioMute
-    volume togglemute
+    volume --mute
 XF86Audio{Raise,Lower}Volume
-    volume {up,down} 5
+    volume {--up,--down} 5
 shift + XF86Audio{Raise,Lower}Volume
-    volume {up,down} 2
+    volume {--up,--down} 2
 
 # brightness
 XF86MonBrightness{Up,Down}
