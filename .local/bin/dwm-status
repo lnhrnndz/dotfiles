@@ -14,7 +14,10 @@ status() {
 
   echo "[NET $NETWORK]"
 
-  ip link | grep -q tun0 && echo "[VPN]"
+  if ip link | grep -q "tun0"; then
+    VPN=$(ip link | grep -o " .*tun0" | sed 's/tun0//' | sed 's/^ $//' | tr '[:lower:]' '[:upper:]')
+    echo "[VPN$VPN]"
+  fi
 
   echo "$delim"
 
