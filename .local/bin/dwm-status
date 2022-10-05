@@ -57,6 +57,12 @@ status() {
     echo "$delim"
   done
 
+  # KEYBOARD
+  KEYBOARD=$(setxkbmap -query | awk '/layout/ { print $2 }') #| tr '[:lower:]' '[:upper:]')
+  echo "[$KEYBOARD]"
+
+  echo "$delim"
+
   # TIME & DATE
   date '+%a %F %H:%M:%S'
 
