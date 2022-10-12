@@ -28,7 +28,7 @@ super + shift + s
 super + s; a
     shot --all
 super + s; s
-    shot --select
+    shot --select --rename
 super + s; f
     shot --focused
 super + s; d
