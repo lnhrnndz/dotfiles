@@ -1,0 +1,1 @@
+/home/leon/packages/fzf/shell/key-bindings.fish
