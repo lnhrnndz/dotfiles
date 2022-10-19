@@ -6,7 +6,7 @@ export PATH="$PATH:$HOME/.local/bin/git"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # default programs
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERM="st-256color"
 export SHELL="fish"
 export BROWSER="firefox"
@@ -16,5 +16,5 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-#. "$HOME/.cargo/env"
-. "$HOME/.cargo/env.fish"
+#[ "$0" = "fish" ] && source "$HOME/.cargo/env.fish"
+source "$HOME/.cargo/env"

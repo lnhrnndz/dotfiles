@@ -35,10 +35,6 @@ alias vimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias sxhkdrc="$EDITOR $HOME/.config/sxhkd/sxhkdrc"
 alias tmuxcf="$EDITOR $HOME/.config/tmux/.tmux.conf"
 
-# fzf
-alias vimfzf="vim \$(fzf)"
-alias cdfzf="cd \$(find * -type d | fzf)"
-
 clip() {
     printf "%s" "$1" | xclip -sel clipboard
 }
