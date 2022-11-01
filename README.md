@@ -1,14 +1,14 @@
 # My dotfiles
 
 OS: [Arch](https://archlinux.org/) <br>
+Shell: [fish](https://fishshell.com) <br>
 WM: [dwm](https://github.com/lnhrnndz/dwm) <br>
 Terminal: [st](https://github.com/lnhrnndz/st) <br>
-Shell: [fish](https://fishshell.com) <br>
-Editor: [neovim](https://github.com/lnhrnndz/NeoVim) <br>
-Compositor: [picom-git](https://github.com/yshui/picom) <br>
 Launcher: [dmenu](https://github.com/lnhrnndz/dmenu) <br>
+Editor: [NeoVim](https://github.com/lnhrnndz/NeoVim) <br>
 Font: [JetBrains Mono](https://www.jetbrains.com/lp/mono/) <br>
-Cursor: [Bibata](https://github.com/ful1e5/Bibata_Cursor) <br>
+Cursor: [Bibata Original](https://github.com/ful1e5/Bibata_Cursor) <br>
+Theme: [Catppuccin](https://github.com/catppuccin/catppuccin) <br>
 
 ## Installation
 
@@ -17,29 +17,28 @@ or move them out of the dotfiles directory.
 
 Prevent undesired files from showing up in dotfiles
 ```bash
-mkdir $HOME/.config
-mkdir $HOME/.local/share
+mkdir ~/.config
+mkdir ~/.local/bin
+mkdir -p ~/.local/share/{fonts,icons}
 ```
 
-To see what will be done by stow and see possible conflicts run the following command
-(-n means stow will run in simulation mode and nothing will be done)
+Do a dryrun first
 ```bash
-cd path/to/dotfiles
-stow -S -v . -t ~ -n
+make dryrun
 ```
 
 If that looks good then run
 ```bash
-stow -S -v . -t ~
+make frfr
 ```
 
+The `MakeFile` uses `stow` to manage symlinks.
 `stow` creates symlinks to the files in this dotfiles directory so changes in either location will show up in the other one too.
 
 ## Uninstall
 
 ```bash
-cd path/to/dotfiles
-stow -D -v . -t ~
+make clean
 ```
 
 Or remove symlinks individually
