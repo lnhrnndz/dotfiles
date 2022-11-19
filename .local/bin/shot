@@ -55,6 +55,8 @@ function screenshot
     echo "drag with left mouse button to select area"
     scrot --select --line mode=edge "$FILENAME" || notify "fail"
     notify "select"
+    xclip -selection clipboard -t image/png -i < "$FILENAME"
+    notify-send -u low "copied to clipboard"
   end
   if set -q _flag_focused
     scrot --focused "$FILENAME" || notify "fail"
