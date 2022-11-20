@@ -42,3 +42,5 @@ set -o vi
 
 [ -f ~/.config/shell/profile ] && source ~/.config/shell/profile
 [ -f ~/.config/shell/aliasrc ] && source ~/.config/shell/aliasrc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

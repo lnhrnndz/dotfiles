@@ -1,0 +1,36 @@
+name: catppuccin
+
+#define BACKGROUND #1E1E2E
+#define FOREGROUND #CDD6F4
+
+! black
+#define COLOR00 #45475A
+#define COLOR08 #585B70
+
+! red
+#define COLOR01 #F38BA8
+#define COLOR09 #F38BA8
+
+! green
+#define COLOR02 #A6E3A1
+#define COLOR10 #A6E3A1
+
+! yellow
+#define COLOR03 #F9E2AF
+#define COLOR11 #F9E2AF
+
+! blue
+#define COLOR04 #89B4FA
+#define COLOR12 #89B4FA
+
+! magenta
+#define COLOR05 #F5C2E7
+#define COLOR13 #F5C2E7
+
+! cyan
+#define COLOR06 #94E2D5
+#define COLOR14 #94E2D5
+
+! white
+#define COLOR07 #BAC2DE
+#define COLOR15 #A6ADC8

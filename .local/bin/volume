@@ -3,11 +3,12 @@
 set sink (pactl get-default-sink)
 test -z "$sink" && exit 1
 
-argparse h/help u/up= d/down= m/mute s/set= -- $argv
+argparse h/help u/up= d/down= m/mute s/set= q/query -- $argv
 or return
 
 if set -q _flag_help
-  echo "volume [-h|--help] [-u|--up] [-d|--down] [-s|--set]"
+  echo "volume [-h|--help] [-u|--up PERCENT] [-d|--down PERCENT]
+       [-s|--set VOLUME] [-q|--query]"
   exit 0
 end
 
@@ -25,6 +26,12 @@ end
 
 if set -q _flag_set
   pactl set-sink-volume "$sink" "$_flag_set%"
+end
+
+if set -q _flag_query
+  set volume (pactl get-sink-volume "$sink" | head -n 1 | awk '{ print $5 }'# | sed 's/%//')
+  echo "sink: $sink"
+  echo "volume: $volume%"
 end
 
 set volume (pactl get-sink-volume "$sink" | head -n 1 | awk '{ print $5 }'# | sed 's/%//')
