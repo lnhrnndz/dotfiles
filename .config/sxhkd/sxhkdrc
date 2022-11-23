@@ -84,6 +84,6 @@ super + n; {n,d,m,y,o,Return}
 
 
 F4
-    reloaddisplay.sh
+    reloaddisplay
 shift + F4
-    reloaddisplay.sh "sleep"
+    reloaddisplay --sleep
