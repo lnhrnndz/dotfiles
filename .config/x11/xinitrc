@@ -1,5 +1,8 @@
 #!/bin/sh
 
+#picom --experimental-backends -b
+feh --bg-fill $HOME/wallpapers/archbox.png
+
 xrdb -merge $HOME/.Xresources
 
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
