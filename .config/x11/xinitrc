@@ -1,19 +1,12 @@
 #!/bin/sh
 
-$HOME/.config/x11/screenlayout/ohbabyatripple.sh
 xrdb -merge $HOME/.Xresources
 
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 sleep 1
 
-#xmodmap $HOME/.config/x11/xmodmaprc
-
-#setxkbmap -option altwin:swap_lalt_lwin
-#setxkbmap -option ctrl:swap_lwin_lctl
-
-setxkbmap -option altwin:swap_lalt_lwin
-xcape -e 'Alt_L=Escape'
-
+xmodmap $HOME/.config/x11/xmodmaprc
+xcape -e 'Super_L=Escape'
 xset r rate 200 36
 
 xbanish &
