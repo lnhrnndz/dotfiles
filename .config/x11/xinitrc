@@ -1,16 +1,19 @@
 #!/bin/sh
 
 $HOME/.config/x11/screenlayout/ohbabyatripple.sh
+
+#picom --experimental-backends -b
+feh --bg-fill $HOME/wallpapers/archbox.png
+
 xrdb -merge $HOME/.Xresources
 
-xbanish &
 setxkbmap -option caps:ctrl_modifier
 xcape -e 'Caps_Lock=Escape'
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 xset r rate 200 36
 
-#picom --experimental-backends -b
-feh --bg-fill $HOME/Pictures/wallpapers/archbox.png
+xbanish &
+
 dunst &
 
 dwm-status &
