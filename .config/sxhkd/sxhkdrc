@@ -87,3 +87,6 @@ F4
     reloaddisplay
 shift + F4
     reloaddisplay --sleep
+
+super + z
+    notify-send -u low "$(status.sh)"
