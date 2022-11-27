@@ -14,9 +14,6 @@ xset r rate 200 36
 
 xbanish &
 
-#picom --experimental-backends -b
-feh --bg-fill $HOME/wallpapers/archbox.png
-
 dunst &
 
 #dwm-status &
