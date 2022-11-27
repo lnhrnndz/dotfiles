@@ -89,4 +89,4 @@ shift + F4
     reloaddisplay --sleep
 
 super + z
-    notify-send -u low "$(status.sh)"
+    notify-send -r 222 -u low "$(status.sh)"
