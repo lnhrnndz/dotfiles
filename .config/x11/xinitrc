@@ -3,7 +3,7 @@
 $HOME/.config/x11/screenlayout/ohbabyatripple.sh
 
 #picom --experimental-backends -b
-feh --bg-fill $HOME/wallpapers/archbox.png
+feh --bg-fill $HOME/wallpapers/colorschemes/catppuccin
 
 xrdb -merge $HOME/.Xresources
 
