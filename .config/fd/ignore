@@ -1,3 +1,7 @@
 .cache/
 .rustup/
 .cargo/
+.steam/
+.var/
+.local/share/
+.local/state/
