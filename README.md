@@ -17,8 +17,8 @@ or move them out of the dotfiles directory.
 
 Prevent undesired files from showing up in dotfiles
 ```bash
+mkdir bin
 mkdir ~/.config
-mkdir ~/.local/bin
 mkdir -p ~/.local/share/{fonts,icons}
 ```
 
