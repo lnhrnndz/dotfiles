@@ -1,7 +1,7 @@
 #!/bin/fish
 
 set TIMESTAMP (date +%Y-%m-%d_%H%M%S)
-set FOLDER "$HOME/Pictures/Screenshots/"
+set FOLDER "$HOME/Pictures/screenshots/"
 set FILENAME "$FOLDER$TIMESTAMP.png"
 
 function notify
