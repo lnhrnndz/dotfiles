@@ -31,3 +31,6 @@ bind -M insert -- \et 'tree --dirsfirst -F'
 
 # WSL #
 abbr -a -- e 'explorer.exe'
+
+# VPN #
+abbr -a -- vpn 'nordvpn'
