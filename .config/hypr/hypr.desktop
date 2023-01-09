@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=hypr
+Comment=will run /home/leon/.config/hypr/winitrc
+Exec=/home/leon/.config/hypr/winitrc
+Icon=xterm
+Type=Application
