@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #picom --experimental-backends -b
-feh --bg-fill $HOME/wallpapers/archbox.png
+feh --bg-fill $HOME/wallpapers/colorschemes/gruvbox
 
 xrdb -merge $HOME/.Xresources
 

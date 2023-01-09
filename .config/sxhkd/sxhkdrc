@@ -10,7 +10,7 @@ super + shift + q
 
 # terminal
 super + shift + Return
-    st
+    alacritty
 
 # launcher
 super + p

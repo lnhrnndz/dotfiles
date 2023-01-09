@@ -1,8 +1,8 @@
 #!/bin/sh
 
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/bin/dmenu"
-export PATH="$PATH:$HOME/.local/bin/git"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/bin/dmenu"
+export PATH="$PATH:$HOME/bin/flatpak"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # default programs

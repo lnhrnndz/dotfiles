@@ -1,0 +1,95 @@
+#!/bin/fish
+
+set TIMESTAMP (date +%Y-%m-%d_%H%M%S)
+set FOLDER "$HOME/Pictures/screenshots/"
+set FILENAME "$FOLDER$TIMESTAMP.png"
+
+function notify
+  if test "$argv[1]" = "fail"
+    notify-send -u critical "Failed to take screenshot"
+    echo "Failed to take screenshot"
+    test -z $argv[2] && exit 1
+    exit $argc[2]
+  else if test -z $argv[1]
+    notify-send -u low "Screenshot taken!"
+    echo "screenshot saved as $FILENAME"
+  else
+    notify-send -u low "Screenshot taken! ($argv[1])"
+    echo "screenshot saved as $FILENAME"
+  end
+end
+
+function uniquename
+  set NAME $argv[1]
+  set suffix 1
+
+  test -e "$NAME";
+  and set NAME (echo "$NAME" | sed 's/\.png$/(1).png/')
+  while test -e "$NAME"
+    echo "File already exists $NAME" >&2
+    set oldsuffix $suffix
+    set suffix (math $suffix + 1)
+    set NAME (echo $NAME | sed "s/($oldsuffix)\.png\$/($suffix).png/")
+  end
+  echo $NAME
+end
+
+function screenshot
+  argparse h/help n/name= a/all s/select f/focused m/monitor d/dmenu r/rename -- $argv
+  or notify "fail" 3
+
+  if set -q _flag_help
+    echo "usage: screenshot [-h|--help] [-n|--name NAME] [-a|--all] [-s|--select] [-f|--focused]"
+    echo "                  [-m|--monitor] [-d|--dmenu] [-r|--rename]"
+    exit
+  end
+  if set -q _flag_name
+    set FILENAME "$FOLDER$_flag_name.png"
+    set FILENAME (uniquename "$FILENAME")
+  end
+  if set -q _flag_all
+    scrot "$FILENAME" || notify "fail"
+    notify "all"
+  end
+  if set -q _flag_select
+    echo "drag with left mouse button to select area"
+    scrot --select --line mode=edge "$FILENAME" || notify "fail"
+    notify "select"
+    xclip -selection clipboard -t image/png -i < "$FILENAME"
+    notify-send -u low "copied to clipboard"
+  end
+  if set -q _flag_focused
+    scrot --focused "$FILENAME" || notify "fail"
+    notify "focused"
+  end
+  if set -q _flag_monitor
+    echo "not implemented yet"
+    notify "fail"
+    set -l screens (xrandr -q | awk '/ connected/ { print $1 }')
+    set -l choice (echo $screens | dmenu -p "monitor")
+  end
+  if set -q _flag_dmenu
+    #TODO: set name with dmenu
+    set -l options "all
+select
+focused
+monitor"
+    set -l choice (echo $options | dmenu -p "screenshot")
+    test -z $choice && exit 2
+    screenshot "--$choice"
+  end
+  if set -q _flag_rename
+    set -l NEWFILENAME (echo "" | dmenu -p "new filename" )
+    if not test "$NEWFILENAME" = ''
+      set -l NEWFILENAME (echo (dirname $FILENAME)/$NEWFILENAME.png)
+
+      set -l NEWFILENAME (uniquename "$NEWFILENAME")
+
+      mv $FILENAME $NEWFILENAME
+      notify-send -u low "Screenshot renamed!"
+      echo "Screenshot saved as $NEWFILENAME"
+    end
+  end
+end
+
+screenshot $argv

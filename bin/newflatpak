@@ -1,0 +1,29 @@
+#!/bin/fish
+
+set FLATPACKDIR "/var/lib/flatpak/exports/bin"
+set BINDIR "$HOME/bin/flatpak"
+
+set flats (ls "$FLATPACKDIR")
+set bins (ls "$BINDIR")
+
+function addflat
+  set -l flat "$argv[1]"
+  echo "new flatpak: $flat"
+  read -P "name: " name
+  if test -z "$name"
+    echo "invalid name, aborting"
+    exit 1
+  end
+  ln -s "$FLATPACKDIR/$flat" "$BINDIR/$name"
+  echo "$FLATPACKDIR/$flat -> $BINDIR/$name"
+end
+
+for flat in $flats
+  set -l flat (echo "$flat" | awk '{print $1}')
+  if not echo "$bins" | grep -q "$flat"
+    addflat "$flat"
+  end
+end
+
+echo "done"
+echo "check if any symlinks are broken with `symlinks` command"

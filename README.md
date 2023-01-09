@@ -8,7 +8,6 @@ Launcher: [dmenu](https://github.com/lnhrnndz/dmenu) <br>
 Editor: [NeoVim](https://github.com/lnhrnndz/NeoVim) <br>
 Font: [JetBrains Mono](https://www.jetbrains.com/lp/mono/) <br>
 Cursor: [Bibata Original](https://github.com/ful1e5/Bibata_Cursor) <br>
-Theme: [Catppuccin](https://github.com/catppuccin/catppuccin) <br>
 
 ## Installation
 
@@ -17,8 +16,8 @@ or move them out of the dotfiles directory.
 
 Prevent undesired files from showing up in dotfiles
 ```bash
+mkdir bin
 mkdir ~/.config
-mkdir ~/.local/bin
 mkdir -p ~/.local/share/{fonts,icons}
 ```
 
