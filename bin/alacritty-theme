@@ -1,0 +1,18 @@
+#!/bin/sh
+
+THEMES_DIR="$HOME/.config/alacritty/themes"
+
+THEMES="$(ls $THEMES_DIR | sed 's/\.yml//g')"
+
+theme="$(echo "$THEMES" | fzf --height=8 --reverse)"
+
+if [ -z "$theme" ]; then
+	echo "invalid theme"
+	exit 1
+fi
+
+echo "theme: $theme"
+
+eval "sed -i 's|  - ~/.config/alacritty/themes/.*\.yml$|  - ~/.config/alacritty/themes/${theme}.yml|' $HOME/.config/alacritty/alacritty.yml"
+
+neofetch

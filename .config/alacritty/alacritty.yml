@@ -1,8 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/gruvbox.yml
-  - ~/.config/alacritty/themes/catppuccin-mocha.yml
-  - ~/.config/alacritty/themes/github_dark_default.yml
-    # last line is the theme
+  - ~/.config/alacritty/themes/github.yml
 
 env:
   WINIT_X11_SCALE_FACTOR: "1"
