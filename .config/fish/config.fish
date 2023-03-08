@@ -57,9 +57,8 @@ end
 
 function source_files
   set -l files \
-      $HOME/.config/shell/profile
-
-      #$HOME/.config/fish/abbr.fish \
+      $HOME/.config/shell/profile \
+      $HOME/.config/fish/abbr.fish \
 
   for i in $files
     test -e $i && source $i
