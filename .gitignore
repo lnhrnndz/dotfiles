@@ -2,3 +2,5 @@
 .config/qBittorrent
 
 .config/fish/fish_variables
+
+.DS_store
