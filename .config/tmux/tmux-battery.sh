@@ -1,27 +1,25 @@
 #!/bin/sh
 # script to add battery status to tmux status bar
 
-charging="#[bg=colour40,fg=colour000]"
-low="#[bg=colour214,fg=colour234]"
-critical="#[bg=colour160,fg=colour255]"
+chargning_col="#[bg=colour40,fg=colour000]"
+low_col="#[bg=colour214,fg=colour234]"
+critical_col="#[bg=colour160,fg=colour255]"
 
-for BATTERY in /sys/class/power_supply/BAT* ; do
 
-	battery="$(cat "${BATTERY}"/capacity)"
-	batterystatus="$(cat "${BATTERY}"/status)"
+battery="$(system_profiler SPPowerDataType | awk -F": " '/State of Charge/ { print $2 }')"
+charging="$(system_profiler SPPowerDataType | awk -F": " '/Charging/ { print $2 }')"
 
-	if [ "$batterystatus" = Charging ] && [ "$battery" -lt 99 ]; then
-		printf "%s %s%% " "$charging" "$battery"
-		exit 0
-	fi
+if [ "$charging" = Yes ] && [ "$battery" -lt 99 ]; then
+	printf "%s %s%% " "$chargning_col" "$battery"
+	exit 0
+fi
 
-	if [ "$(( battery > 20 ))" = 1 ]; then
-		printf " %s%% " "$battery"
-	elif [ "$(( battery > 5 ))" = 1 ]; then
-		printf "%s %s%% " "$low" "$battery"
-	else
-		printf "%s !!!!! %s%% !!!!! " "$critical" "$battery"
-	fi
-done
+if [ "$(( battery > 20 ))" = 1 ]; then
+	printf " %s%% " "$battery"
+elif [ "$(( battery > 5 ))" = 1 ]; then
+	printf "%s %s%% " "$low_col" "$battery"
+else
+	printf "%s !!!!! %s%% !!!!! " "$critical_col" "$battery"
+fi
 
 printf "\\n"
