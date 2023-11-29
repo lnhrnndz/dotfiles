@@ -10,6 +10,9 @@ function fish_greeting
   #fortune
 end
 
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+
+
 function fish_mode_prompt
   set_color brblue
   fish_vcs_prompt > /dev/null
@@ -59,6 +62,7 @@ function source_files
   set -l files \
       $HOME/.config/shell/profile \
       $HOME/.config/fish/abbr.fish \
+      $HOME/.config/fish/alias.fish \
 
   for i in $files
     test -e $i && source $i

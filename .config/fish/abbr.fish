@@ -21,6 +21,8 @@ abbr -a -- lt 'exa --sort newest -l'
 # fzf #
 abbr -a -- fcd 'fzf-cd-widget'
 abbr -a -- fvim 'vim $(find . | fzf)'
+abbr -a -- fopen 'fuzzyopen' # see fuzzyopen script
+abbr -a -- fzo 'fuzzyopen' # see fuzzyopen script
 
 abbr -a -- sxhkdrc 'nvim ~/.config/sxhkd/sxhkdrc'
 
@@ -32,5 +34,11 @@ bind -M insert -- \et 'tree --dirsfirst -F'
 # WSL #
 abbr -a -- e 'explorer.exe'
 
+# OSX #
+abbr -a -- o 'open .'
+abbr -a -- s 'sioyek'
+#alias sioyek='open -a sioyek'
+
 # VPN #
 abbr -a -- vpn 'nordvpn'
+

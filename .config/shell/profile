@@ -8,8 +8,8 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # default programs
-export EDITOR="vim"
-export TERM="xterm-256color"
+export EDITOR="nvim"
+export TERM="st-256color"
 export SHELL="fish"
 export BROWSER="firefox"
 

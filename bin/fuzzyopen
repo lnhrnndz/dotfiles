@@ -1,0 +1,8 @@
+#!/bin/sh
+
+file="$(fzf --height=8 --reverse)"
+if [ -z "$file" ] || [ ! -e "$file" ]; then
+	exit 1
+fi
+echo "opening $file"
+exec open "$file"
