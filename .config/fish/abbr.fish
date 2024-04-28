@@ -15,7 +15,8 @@ abbr -a -- gco 'git checkout'
 abbr -a -- ll 'ls -l'
 abbr -a -- la 'ls -a'
 abbr -a -- lal 'ls -al'
-abbr -a -- lt 'exa --sort newest -l'
+abbr -a -- lt 'eza --sort newest -l'
+abbr -a -- lalt 'eza --sort newest -l -a'
 # alias ls in fish/functions
 
 # fzf #
