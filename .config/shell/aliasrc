@@ -6,6 +6,8 @@ alias ll="ls -l"
 alias la="ls -la"
 alias cat="bat"
 
+alias python="python3"
+
 # git
 #alias glog="git log --branches --oneline --graph --decorate"
 alias glog="git log --branches --graph --pretty=format:'%C(yellow)%h%Creset %s%C(auto)%d'"
