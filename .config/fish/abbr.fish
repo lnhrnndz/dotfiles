@@ -10,12 +10,14 @@ abbr -a -- gc 'git commit'
 abbr -a -- gca 'git commit --amend'
 abbr -a -- gco 'git checkout'
 # alias glog in fish/functions
+abbr -a -- lg 'lazygit'
 
 # ls #
 abbr -a -- ll 'ls -l'
 abbr -a -- la 'ls -a'
 abbr -a -- lal 'ls -al'
-abbr -a -- lt 'exa --sort newest -l'
+abbr -a -- lt 'eza --sort newest -l'
+abbr -a -- lalt 'eza --sort newest -l -a'
 # alias ls in fish/functions
 
 # fzf #

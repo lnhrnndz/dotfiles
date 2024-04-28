@@ -1,3 +1,3 @@
-function ls --wraps='exa'
-  exa --group-directories-first $argv
+function ls --wraps='eza'
+  eza --group-directories-first $argv
 end
