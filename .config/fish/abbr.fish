@@ -25,6 +25,9 @@ abbr -a -- lt 'eza --sort newest -l'
 abbr -a -- lalt 'eza --sort newest -l -a'
 # alias ls in fish/functions
 
+abbr -a -- mv 'mv -v'
+abbr -a -- cp 'cp -v'
+
 # fzf #
 abbr -a -- fcd 'fzf-cd-widget'
 abbr -a -- fvim 'vim $(find . | fzf)'
