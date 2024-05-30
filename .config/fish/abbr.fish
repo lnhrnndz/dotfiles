@@ -1,5 +1,10 @@
 abbr -a -- src 'source $HOME/.config/fish/config.fish'
 
+function last_history_item
+    echo $history[1]
+end
+abbr -a !! --position anywhere --function last_history_item
+
 # git #
 abbr -a -- gl 'git log'
 abbr -a -- gs 'git status'
