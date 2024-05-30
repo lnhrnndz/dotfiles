@@ -1,5 +1,10 @@
 abbr -a -- src 'source $HOME/.config/fish/config.fish'
 
+function last_history_item
+    echo $history[1]
+end
+abbr -a !! --position anywhere --function last_history_item
+
 # git #
 abbr -a -- gl 'git log'
 abbr -a -- gs 'git status'
@@ -19,6 +24,9 @@ abbr -a -- lal 'ls -al'
 abbr -a -- lt 'eza --sort newest -l'
 abbr -a -- lalt 'eza --sort newest -l -a'
 # alias ls in fish/functions
+
+abbr -a -- mv 'mv -v '
+abbr -a -- cp 'cp -v '
 
 # fzf #
 abbr -a -- fcd 'fzf-cd-widget'
