@@ -49,6 +49,6 @@ abbr -a -- o 'open .'
 abbr -a -- s 'sioyek'
 #alias sioyek='open -a sioyek'
 
-# VPN #
-abbr -a -- vpn 'nordvpn'
-
+# NixOs #
+abbr -a -- config 'sudoedit /etc/nixos/configuration.nix'
+abbr -a -- rebuild 'sudo nixos-rebuild switch'
