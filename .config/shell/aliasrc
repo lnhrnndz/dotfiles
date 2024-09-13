@@ -1,41 +1,45 @@
 #!/bin/sh
 
+alias src='source ~/.zshrc'
+
 # command shortcuts
-alias ls="exa --group-directories-first"
-alias ll="ls -l"
-alias la="ls -la"
+alias ls="eza --group-directories-first"
+alias la="ls -a --group-directories-first"
+alias ll="ls -l --group-directories-first"
+alias ll="ls -snew --group-directories-first"
+alias ll="ls -al --group-directories-first"
+alias ll="ls -al -snew --group-directories-first"
 alias cat="bat"
 
 alias python="python3"
 
 # git
+alias gs="git status"
+alias gco="git checkout"
+alias gl="git log"
 #alias glog="git log --branches --oneline --graph --decorate"
 alias glog="git log --branches --graph --pretty=format:'%C(yellow)%h%Creset %s%C(auto)%d'"
 alias gdiff="bat \$(git status --porcelain | awk '{ print \$2 }')"
 alias udiff="bat \$(git status --porcelain | awk '/^\?\?/ { print \$2 }')"
+alias gd="git diff"
 
 alias lg="lazygit"
 
-alias suspend="loginctl suspend"
-
-alias scrot='scrot "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
 alias tree="tree --dirsfirst -F"
 alias dotfilestree="tree -a . -I .git"
 
 alias wikis="cd $HOME/wikis"
 
-#alias vim="nvim"
-alias doom="$HOME/.emacs.d/bin/doom"
-alias emacs="emacs -fh"
-alias emacsc="emacsclient -c -a 'emacs'"
-alias emacsd="emacs --daemon"
-
 # config shortcuts
 alias zshrc="$EDITOR $HOME/.zshrc"
 alias vimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias sxhkdrc="$EDITOR $HOME/.config/sxhkd/sxhkdrc"
 alias tmuxcf="$EDITOR $HOME/.config/tmux/.tmux.conf"
+
+alias suspend="loginctl suspend"
+
+alias scrot='scrot "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"'
 
 clip() {
     printf "%s" "$1" | xclip -sel clipboard

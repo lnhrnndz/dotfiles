@@ -25,8 +25,11 @@ abbr -a -- lt 'eza --sort newest -l'
 abbr -a -- lalt 'eza --sort newest -l -a'
 # alias ls in fish/functions
 
-abbr -a -- mv 'mv -v '
-abbr -a -- cp 'cp -v '
+abbr -a -- mv 'mv -v'
+abbr -a -- cp 'cp -v'
+abbr -a -- rsync 'rsync -avh --progress'
+
+abbr -a -- usermount 'sudo mount -o umask=0022,gid=100,uid=1000'
 
 # fzf #
 abbr -a -- fcd 'fzf-cd-widget'
@@ -49,6 +52,7 @@ abbr -a -- o 'open .'
 abbr -a -- s 'sioyek'
 #alias sioyek='open -a sioyek'
 
-# VPN #
-abbr -a -- vpn 'nordvpn'
-
+# NixOs #
+abbr -a -- config 'sudoedit /etc/nixos/configuration.nix'
+abbr -a -- rebuild 'sudo nixos-rebuild switch'
+abbr -a -- update 'sudo nix-channel --update'

@@ -1,14 +1,5 @@
 # My dotfiles
 
-OS: [Arch](https://archlinux.org/) <br>
-Shell: [fish](https://fishshell.com) <br>
-WM: [dwm](https://github.com/lnhrnndz/dwm) <br>
-Terminal: [st](https://github.com/lnhrnndz/st) <br>
-Launcher: [dmenu](https://github.com/lnhrnndz/dmenu) <br>
-Editor: [NeoVim](https://github.com/lnhrnndz/NeoVim) <br>
-Font: [JetBrains Mono](https://www.jetbrains.com/lp/mono/) <br>
-Cursor: [Bibata Original](https://github.com/ful1e5/Bibata_Cursor) <br>
-
 ## Installation
 
 NOTE: If you don't care for certain configurations then delete their files/directories
@@ -16,10 +7,11 @@ or move them out of the dotfiles directory.
 
 Prevent undesired files from showing up in dotfiles
 ```bash
-mkdir ~/bin
-mkdir ~/.config
+mkdir -p ~/bin
+mkdir -p ~/.config
 mkdir -p ~/.local/share/{fonts,icons}
 ```
+Or use `make dirs` to quickly do all of the above
 
 Do a dryrun first
 ```bash
@@ -28,7 +20,7 @@ make dryrun
 
 If that looks good then run
 ```bash
-make frfr
+make install
 ```
 
 The `MakeFile` uses `stow` to manage symlinks.
@@ -52,5 +44,6 @@ until you restore the file it points to and then unstow that file.
 
 ## Command replacements
 
-- [`exa`](https://github.com/ogham/exa)
-- [`bat`](https://github.com/sharkdp/bat)
+- [`eza`](https://github.com/eza-community/eza) for `ls`
+- [`bat`](https://github.com/sharkdp/bat) for `cat`
+- [`zoxide`](https://github.com/ajeetdsouza/zoxide) for `cd`
