@@ -60,8 +60,11 @@
       htop
       iotop
       ranger
-      zed-editor
+      #zed-editor
       mediainfo
+	  nzbget
+	  beets
+	  python3
       # programs
     ];
   };
