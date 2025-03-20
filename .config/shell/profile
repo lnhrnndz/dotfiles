@@ -1,5 +1,3 @@
-#!/bin/sh
-
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -15,7 +13,7 @@ export PATH="$PATH:$HOME/.emacs.d/bin"
 # default programs
 export EDITOR="nvim"
 export TERM="st-256color"
-export SHELL="fish"
+export SHELL="zsh"
 export BROWSER="firefox"
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -27,3 +25,4 @@ export XDG_STATE_HOME="$HOME/.local/state"
 [ "$0" = "zsh" ] && source "$HOME/.config/cargo/env.sh"
 [ -z "$0" ] && source "$HOME/.config/cargo/env.fish"
 #source "$HOME/.cargo/env"
+source /Users/leon/.ghcup/env # haskell

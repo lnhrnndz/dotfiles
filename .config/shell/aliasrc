@@ -6,9 +6,9 @@ alias src='source ~/.zshrc'
 alias ls="eza --group-directories-first"
 alias la="ls -a --group-directories-first"
 alias ll="ls -l --group-directories-first"
-alias ll="ls -snew --group-directories-first"
-alias ll="ls -al --group-directories-first"
-alias ll="ls -al -snew --group-directories-first"
+alias lt="ls -snew --group-directories-first"
+alias lal="ls -al --group-directories-first"
+alias lalt="ls -al -snew --group-directories-first"
 alias cat="bat"
 
 alias python="python3"

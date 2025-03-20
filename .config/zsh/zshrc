@@ -72,4 +72,5 @@ zinit cdreplay -q
 [ -f ~/.config/shell/aliasrc ] && source ~/.config/shell/aliasrc
 
 eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob"
 eval "$(zoxide init --cmd cd zsh)"
