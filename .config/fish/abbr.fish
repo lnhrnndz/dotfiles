@@ -27,7 +27,8 @@ abbr -a -- lalt 'eza --sort newest -l -a'
 
 abbr -a -- mv 'mv -v'
 abbr -a -- cp 'cp -v'
-abbr -a -- rsync 'rsync -avh --progress'
+abbr -a -- rs 'rsync -avh --progress'
+abbr -a -- rsi 'rsync -avh --info=progress2 --partial'
 
 abbr -a -- usermount 'sudo mount -o umask=0022,gid=100,uid=1000'
 
@@ -55,4 +56,5 @@ abbr -a -- s 'sioyek'
 # NixOs #
 abbr -a -- config 'sudoedit /etc/nixos/configuration.nix'
 abbr -a -- rebuild 'sudo nixos-rebuild switch'
+abbr -a -- boot 'sudo nixos-rebuild boot'
 abbr -a -- update 'sudo nix-channel --update'
