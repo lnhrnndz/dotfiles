@@ -36,6 +36,24 @@
     variant = "";
   };
 
+  fileSystems."/mnt/DAS" = {
+    device = "/dev/disk/by-label/DAS";
+    fsType = "btrfs";
+    options = [ "compress=zstd" "noatime" ];
+  };
+
+  fileSystems."/mnt/BIGBOI" = {
+    device = "/dev/disk/by-uuid/A676-DEE5";  # or by-label/MyDrive
+    fsType = "exfat";
+    options = [
+      "defaults"
+      "uid=1000"
+      "gid=100"
+      "umask=022"
+      "nofail" # Prevent boot failure if drive is missing
+    ];
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.leon = {
     isNormalUser = true;
@@ -62,34 +80,44 @@
       ranger
       #zed-editor
       mediainfo
-	  nzbget
-	  beets
-	  python3
+      nzbget
+      beets
+      python3
+      python312Packages.tqdm
+      python312Packages.psutil
+      yt-dlp
+      syncthing
+      podman-compose
+      podman-tui
       # programs
     ];
   };
 
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  #users.defaultUserShell = pkgs.zsh;
 
   # Enable cron service
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "*/10 * * * * leon /home/leon/docker/scripts/updateport.sh > /tmp/port.log"
+      "*/5 * * * * leon /home/leon/docker/scripts/updateportpublic.sh > /tmp/portpublic.log"
+      "*/5 * * * * leon /home/leon/docker/scripts/updateportprivate.sh > /tmp/portprivate.log"
+      "33 3 * * * leon /home/leon/docker/updateallcontainers.sh > /tmp/updatecontainers.log 2> /tmp/updatecontainers.err"
+      "* * * * * leon docker exec qbittorrent_private /config/refreshMAMcookie.sh >/tmp/SeedboxAPI.log 2>/tmp/SeedboxAPI.err"
+      #"* * * * * leon date > /tmp/date.txt"
     ];
   };
 
   # launch fish unless the parent process is already fish
-  #programs.bash = {
-  #interactiveShellInit = ''
-  #  if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-  #    then
-  #      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-  #      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-  #    fi
-  #  '';
-  #};
+  programs.bash = {
+  interactiveShellInit = ''
+    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -104,6 +132,8 @@
     gnumake
     gcc
     wget
+    python312Packages.tqdm
+    python312Packages.psutil
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -129,8 +159,10 @@
     };
   };
   services.tailscale.enable = true;
+  systemd.services.tailscaled.after = [ "systemd-networkd-wait-online.service" ];
 
   virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -149,5 +181,70 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  services.samba = {
+    enable = true;
+    #securityType = "user";
+    openFirewall = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "smbnix";
+        "netbios name" = "smbnix";
+        "security" = "user";
+        #"use sendfile" = "yes";
+        #"max protocol" = "smb2";
+        # note: localhost is the ipv6 localhost ::1
+        "hosts allow" = "100.93.234.34 192.168.0. 127.0.0.1 localhost";
+        "hosts deny" = "0.0.0.0/0";
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
+      "public" = {
+        "path" = "/mnt/DAS/smb/public";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        #"force user" = "username";
+        #"force group" = "groupname";
+      };
+      "private" = {
+        "path" = "/mnt/DAS/smb/private";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "valid users" = "leon";
+        "force user" = "leon";
+        #"force group" = "groupname";
+      };
+      "books" = {
+        "path" = "/mnt/DAS/media/books";
+        "browseable" = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+      "audiobooks" = {
+        "path" = "/mnt/DAS/media/audiobooks";
+        "browseable" = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+    };
+  };
+  # for windows (ew)
+  #services.samba-wsdd = {
+  #  enable = true;
+  #  openFirewall = true;
+  #};
+  networking.firewall.enable = true;
+  networking.firewall.allowPing = true;
 
 }
