@@ -4,6 +4,8 @@ if status is-interactive
   fish_vi_key_bindings
   bind -M insert \cy accept-autosuggestion
   bind -M insert \cf forward-word
+  set fish_cursor_default block
+  set fish_cursor_insert block
 end
 
 function fish_greeting
