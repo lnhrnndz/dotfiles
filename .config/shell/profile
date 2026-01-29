@@ -7,12 +7,13 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/bin/dmenu"
 export PATH="$PATH:$HOME/bin/git"
 export PATH="$PATH:$HOME/bin/flatpak"
+export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # default programs
 export EDITOR="nvim"
-export TERM="st-256color"
+export TERM="xterm-256color"
 export SHELL="zsh"
 export BROWSER="firefox"
 
@@ -24,5 +25,5 @@ export XDG_STATE_HOME="$HOME/.local/state"
 [ "$0" = "bash" ] && source "$HOME/.config/cargo/env.sh"
 [ "$0" = "zsh" ] && source "$HOME/.config/cargo/env.sh"
 [ -z "$0" ] && source "$HOME/.config/cargo/env.fish"
-#source "$HOME/.cargo/env"
-source /Users/leon/.ghcup/env # haskell
+#source /Users/leon/.ghcup/env # haskell
+. "$HOME/.cargo/env"
