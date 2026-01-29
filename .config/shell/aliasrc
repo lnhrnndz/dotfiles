@@ -9,9 +9,17 @@ alias ll="ls -l --group-directories-first"
 alias lt="ls -snew --group-directories-first"
 alias lal="ls -al --group-directories-first"
 alias lalt="ls -al -snew --group-directories-first"
-alias cat="bat"
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
 
 alias python="python3"
+alias venv="source ~/python/myenv/bin/activate" # deactivate using `deactivate`
 
 # git
 alias gs="git status"
@@ -19,6 +27,7 @@ alias gco="git checkout"
 alias gl="git log"
 #alias glog="git log --branches --oneline --graph --decorate"
 alias glog="git log --branches --graph --pretty=format:'%C(yellow)%h%Creset %s%C(auto)%d'"
+alias git lg="git log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
 alias gdiff="bat \$(git status --porcelain | awk '{ print \$2 }')"
 alias udiff="bat \$(git status --porcelain | awk '/^\?\?/ { print \$2 }')"
 alias gd="git diff"

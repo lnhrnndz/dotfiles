@@ -71,6 +71,12 @@ zinit cdreplay -q
 [ -f ~/.config/shell/profile ] && source ~/.config/shell/profile
 [ -f ~/.config/shell/aliasrc ] && source ~/.config/shell/aliasrc
 
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
+
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob"
 eval "$(zoxide init --cmd cd zsh)"
